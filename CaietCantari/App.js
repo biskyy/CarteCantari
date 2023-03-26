@@ -12,11 +12,11 @@ import NavBar from "./Components/NavBar";
 import ToateCantarile from "./Components/ToateCantarile";
 
 const App = () => {
-  console.log(ToateCantarile[0].id)
+ 
   return (
     <View style={styles.container}>
       <NavBar />
-      <ToateCantarile/>
+      <View style={styles.listaCantari}><ToateCantarile/></View>
     </View>
   );
 };
@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
+  listaCantari: {
+    width: "100%",
+  }
 });
 
 export default App;
