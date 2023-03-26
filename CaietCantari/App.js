@@ -1,22 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { Dimensions ,StyleSheet, Text, View , Button} from 'react-native';
+import React from "react";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  StatusBar,
+} from "react-native";
+import Constants from "expo-constants";
+import NavBar from "./NavBar";
 import ProcessToateCantarile from './ToateCantarile/ProcessToateCantarile';
 
-export default function App() {
-
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get("window").height
-  console.log(windowWidth, windowHeight)
-
-
+const App = () => {
   return (
     <View style={styles.container}>
-      <ProcessToateCantarile/>
-      <Text>{windowWidth}</Text>
-      <StatusBar  />
+      <NavBar />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -30,3 +31,5 @@ const styles = StyleSheet.create({
   
  
 });
+
+export default App;
