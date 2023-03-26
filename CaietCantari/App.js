@@ -8,7 +8,7 @@ import {
   StatusBar,
 } from "react-native";
 import Constants from "expo-constants";
-import NavBar from "./NavBar";
+import NavBar from "./Components/NavBar";
 
 const App = () => {
   return (
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginTop: Constants.statusBarHeight,
   },
 });
 
