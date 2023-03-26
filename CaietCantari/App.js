@@ -1,27 +1,26 @@
-import React from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-  StatusBar,
-} from "react-native";
-import Constants from "expo-constants";
-import NavBar from "./NavBar";
+import { StatusBar } from 'expo-status-bar';
+import { Dimensions ,StyleSheet, Text, View , Button} from 'react-native';
 import ProcessToateCantarile from './ToateCantarile/ProcessToateCantarile';
 
-const App = () => {
+export default function App() {
+
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get("window").height
+  console.log(windowWidth, windowHeight)
+
+
   return (
     <View style={styles.container}>
-      <NavBar />
+      <ProcessToateCantarile/>
+      <Text>{windowWidth}</Text>
+      <StatusBar  />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
+    marginTop: 10
     flex: 1,
     backgroundColor: 'black',
     alignItems: 'center',
@@ -31,5 +30,3 @@ const styles = StyleSheet.create({
   
  
 });
-
-export default App;
