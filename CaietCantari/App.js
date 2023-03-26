@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  StatusBar,
+} from "react-native";
+import Constants from "expo-constants";
+import NavBar from "./NavBar";
 
-export default function App() {
+const App = () => {
   return (
     <View style={styles.container}>
-      <Text>ceva</Text>
-      <StatusBar style="auto" />
+      <NavBar />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    marginTop: Constants.statusBarHeight,
   },
 });
+
+export default App;
