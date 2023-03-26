@@ -9,11 +9,14 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import NavBar from "./Components/NavBar";
+import ToateCantarile from "./Components/ToateCantarile";
 
 const App = () => {
+  console.log(ToateCantarile[0].id)
   return (
     <View style={styles.container}>
       <NavBar />
+      <ToateCantarile/>
     </View>
   );
 };
