@@ -14,7 +14,7 @@ import {
 const windowWidth = Dimensions.get("window").width;
 
 export default function SongList() {
-  const [[cantare, numarCantare], setCantare] = useState([false, -1]);
+  const [[veziCantare, numarCantare], setCantare] = useState([false, -1]);
 
   const cantareEvent = (e) => {
     setCantare([true, 0]);
@@ -32,20 +32,20 @@ export default function SongList() {
 
   return (
     <>
-      {!cantare &&
+      {!veziCantare &&
         [...Cantari].map((cantare, index) => (
           <Button
             id={index}
-            onPress={displaySong(cantare.id)}
+            onPress={cantareEvent}
             color="#ff5c5c"
             key={index}
             title={cantare.name}
           />
         ))}
-      {cantare && [
+      {veziCantare && [
         ...Cantari.map((cantare, index) => <ScrollView></ScrollView>),
       ]}
-      {cantare && <Button onPress={backEvent} title="BACK" />}
+      {veziCantare && <Button onPress={backEvent} title="BACK" />}
     </>
   );
 }
