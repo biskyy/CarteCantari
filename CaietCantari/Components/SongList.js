@@ -1,6 +1,6 @@
 import Cantari from "../Cantari.json";
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Button,
   StyleSheet,
@@ -24,12 +24,6 @@ export default function SongList() {
     setCantare([false, -1]);
   };
 
-  const [[isSong, songID], setSong] = useState([false, 0]);
-
-  const displaySong = (index) => {
-    setSong([true, index]);
-  };
-
   return (
     <>
       {!veziCantare &&
@@ -37,14 +31,15 @@ export default function SongList() {
           <Button
             id={index}
             onPress={cantareEvent}
-            color="#ff5c5c"
+            color="black"
+            backgroundColor="black"
             key={index}
-            title={cantare.name}
+            title={cantare.content
+              .split("\n")[1]
+              .replace(". ", index + 1 + ". ")
+              .slice(1)}
           />
         ))}
-      {veziCantare && [
-        ...Cantari.map((cantare, index) => <ScrollView></ScrollView>),
-      ]}
       {veziCantare && <Button onPress={backEvent} title="BACK" />}
     </>
   );
