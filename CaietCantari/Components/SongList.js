@@ -1,6 +1,7 @@
 import Cantari from "../Cantari.json";
+
 import React from "react";
-import { useState } from "react";
+import { useState , useRef} from "react";
 import {
   Button,
   StyleSheet,
@@ -13,38 +14,45 @@ import {
 } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 
+
 export default function SongList() {
   const [[veziCantare, numarCantare], setCantare] = useState([false, -1]);
 
-  const cantareEvent = (e) => {
+
+
+  ///////////////////////////////////////////////////////Cantare COmponent
+  const ButonCantare = (props) => {
+  const buttonRef = useRef(null); // Defining a ref
+
+  const handlePress = () => {
+    console.log(buttonRef.current.props.title); // Accessing the "title" attribute of the button using the ref
     setCantare([true, 0]);
   };
+
+  return (
+    <Button
+      ref={buttonRef} // Assigning the ref to the button component
+      title={props.title}
+      onPress={handlePress}
+      color={props.color}
+    />
+  );
+};
+
+  ///////////////////////////////////////////////////////Cantare COmponent
+
 
   const backEvent = () => {
     setCantare([false, -1]);
   };
 
-  const [[isSong, songID], setSong] = useState([false, 0]);
-
-  const displaySong = (index) => {
-    setSong([true, index]);
-  };
 
   return (
     <>
       {!veziCantare &&
         [...Cantari].map((cantare, index) => (
-          <Button
-            id={index}
-            onPress={cantareEvent}
-            color="#ff5c5c"
-            key={index}
-            title={cantare.name}
-          />
+          <ButonCantare  key={index} title={cantare.name} color="#ff5c5c" />
         ))}
-      {veziCantare && [
-        ...Cantari.map((cantare, index) => <ScrollView></ScrollView>),
-      ]}
       {veziCantare && <Button onPress={backEvent} title="BACK" />}
     </>
   );
