@@ -9,14 +9,14 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import NavBar from "./Components/NavBar";
-import ToateCantarile from "./Components/ToateCantarile";
+import SongList from "./Components/SongList";
 
 const App = () => {
   return (
     <View style={styles.container}>
       <NavBar />
       <View style={styles.listaCantari}>
-        <ToateCantarile />
+        <SongList />
       </View>
     </View>
   );
