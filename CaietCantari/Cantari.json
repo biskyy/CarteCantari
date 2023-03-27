@@ -1,13 +1,12 @@
 [
-    {
-        "id": 1,
-        "name": "1. Când eram rătăcit",
-        "content": "1. /: Aceasta e :/\n/: Ziua Domnului :/\n/: Veseli să fim :/\n/: Să ne bucurăm :/\nAceasta e ziua Domnului,\nVeseli să fim, să ne bucurăm.\n/: Aceasta e :/ Ziua Domnului!\n2. /: El ne-a creat :/\n/: Şi ai Lui suntem :/\n/: Lui ne-nchinăm :/\n/: Pe El Îl vestim :/\nEl ne-a creat şi ai Lui suntem \nLui ne-nchinăm pe El Îl vestim \n/: El ne-a creat :/\nŞi ai Lui suntem!\n3. /: Noi rătăceam :/\n/: Dar El ne-a iubit :/\n/: Nu-L cunoşteam :/\n/: Dar El s-a jertfit :/\nNoi rătăceam dar El ne-a iubit,\nNu-L cunoşteam \nDar El s-a jertfit.\nNoi rătăceam :/\nDar El ne-a iubit!\n4. /: Isus e Domn :/\n/: Vine în curând :/\n/: Vom moşteni :/\n/: Cu El cerul sfânt :/\nIsus e Domn vine în curând,\nVom moşteni cu El cerul sfânt.\n/: Isus e Domn :/\nVine în curând!\n"
-    },
-    {
-        "id":2,
-        "name": "2. Aceasta e ziua Domnului",
-        "content": "1. /: Aceasta e :/\n/: Ziua Domnului :/\n/: Veseli să fim :/\n/: Să ne bucurăm :/\nAceasta e ziua Domnului,\nVeseli să fim, să ne bucurăm.\n/: Aceasta e :/ Ziua Domnului!\n2. /: El ne-a creat :/\n/: Şi ai Lui suntem :/\n/: Lui ne-nchinăm :/\n/: Pe El Îl vestim :/\nEl ne-a creat şi ai Lui suntem \nLui ne-nchinăm pe El Îl vestim \n/: El ne-a creat :/\nŞi ai Lui suntem!\n3. /: Noi rătăceam :/\n/: Dar El ne-a iubit :/\n/: Nu-L cunoşteam :/\n/: Dar El s-a jertfit :/\nNoi rătăceam dar El ne-a iubit,\nNu-L cunoşteam \nDar El s-a jertfit.\nNoi rătăceam :/\nDar El ne-a iubit!\n4. /: Isus e Domn :/\n/: Vine în curând :/\n/: Vom moşteni :/\n/: Cu El cerul sfânt :/\nIsus e Domn vine în curând,\nVom moşteni cu El cerul sfânt.\n/: Isus e Domn :/\nVine în curând!\n"
-
-    }
+  {
+    "id": 1,
+    "name": "1. Când eram rătăcit",
+    "content": "\n1. Am găsit în Domnul fericirea\nAm găsit Măreţul Har Divin\nAm găsit prin Isus mântuirea\nCe-am căutat-o de atâta timp.\nAm găsit în Isus Adevărul\nCând inima mi-am deschis\nPacea sfântă, binecuvântarea\nDe la Domnul am primit.\n\nRefren: Glorie Isuse Ţie,\nAleluia-n veci mărire!\nTu eşti a mea fericire\nAleluia, Aleluia! \n\n2. Când furtuna vine peste mare\nŞi când vânturile grele bat.\nSpune-mi Doamne\nCum să pot eu oare\nMarea vieţii s-o străbat?\nCând păcatul ameninţă lumea,\nŞtiu sfârşitul va veni-n curând\nNu mă tem,\nCăci Tu eşti lângă mine\nTu eşti scutul meu oricând!\n\n3. La credinţă vin’ acum degrabă\nNu mai sta nepăsător mereu\nAh, eu ştiu că Isus mă iubeşte\nŞi El e-n sufletul meu.\nAm găsit în Isus Adevărul\nCând inima mi-am deschis\nPacea sfântă, binecuvântarea\nDe la Domnul am primit.\n"
+  },
+  {
+    "id": 2,
+    "name": "2. Aceasta e ziua Domnului",
+    "content": "1. /: Aceasta e :/\n/: Ziua Domnului :/\n/: Veseli să fim :/\n/: Să ne bucurăm :/\nAceasta e ziua Domnului,\nVeseli să fim, să ne bucurăm.\n/: Aceasta e :/ Ziua Domnului!\n2. /: El ne-a creat :/\n/: Şi ai Lui suntem :/\n/: Lui ne-nchinăm :/\n/: Pe El Îl vestim :/\nEl ne-a creat şi ai Lui suntem \nLui ne-nchinăm pe El Îl vestim \n/: El ne-a creat :/\nŞi ai Lui suntem!\n3. /: Noi rătăceam :/\n/: Dar El ne-a iubit :/\n/: Nu-L cunoşteam :/\n/: Dar El s-a jertfit :/\nNoi rătăceam dar El ne-a iubit,\nNu-L cunoşteam \nDar El s-a jertfit.\nNoi rătăceam :/\nDar El ne-a iubit!\n4. /: Isus e Domn :/\n/: Vine în curând :/\n/: Vom moşteni :/\n/: Cu El cerul sfânt :/\nIsus e Domn vine în curând,\nVom moşteni cu El cerul sfânt.\n/: Isus e Domn :/\nVine în curând!\n"
+  }
 ]
