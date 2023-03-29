@@ -11,29 +11,34 @@ import {
   StatusBar,
   ScrollView,
   Dimensions,
+  Touchable,
+  TouchableOpacity,
 } from "react-native";
 import Separator from "./Separator";
+import CustomButton from "./CustomButton";
 
 export default function SongList() {
   const [[veziCantare, numarCantare], setCantare] = useState([false, -1]);
 
+  const handlePress = (id) => {
+    // console.log(buttonRef.current.props.id); // Accessing the "title" attribute of the button using the ref
+    setCantare([true, id]);
+  };
   ///////////////////////////////////////////////////////Cantare COmponent
   const ButonCantare = (props) => {
     const buttonRef = useRef(null); // Defining a ref
 
-    const handlePress = () => {
-      // console.log(buttonRef.current.props.id); // Accessing the "title" attribute of the button using the ref
-      setCantare([true, buttonRef.current.props.id]);
-    };
-
     return (
-      <Button
+      <TouchableOpacity
+        style={{ color: "white" }}
         ref={buttonRef} // Assigning the ref to the button component
         id={props.id}
         title={props.title}
-        onPress={handlePress}
+        onPress={() => handlePress(props.id)}
         color={props.color}
-      />
+      >
+        <Text style={{ color: "white" }}>{props.title}</Text>
+      </TouchableOpacity>
     );
   };
 
@@ -46,18 +51,28 @@ export default function SongList() {
   return (
     <>
       <View style={{ backgroundColor: "black", flex: 1 }}>
-        {!veziCantare &&
-          [...Cantari].map((cantare, index) => (
-            <ButonCantare
-              key={index}
-              title={cantare.content
-                .split("\n")[1]
-                .replace(". ", cantare.id + ". ")
-                .slice(1)}
-              color={Platform.OS == "android" ? "black" : "white"}
-              id={cantare.id}
-            />
-          ))}
+        {!veziCantare && (
+          <>
+            <ScrollView
+              contentContainerStyle={{ flexGrow: 1 }}
+              indicatorStyle="white"
+            >
+              {[...Cantari].map((cantare, index) => (
+                <CustomButton
+                  key={index}
+                  text={cantare.content
+                    .split("\n")[1]
+                    .replace(". ", cantare.id + ". ")
+                    .slice(1)}
+                  textStyle={styles.songButtonText}
+                  textContainerStyle={styles.songButtonTextContainer}
+                  style={styles.songButton}
+                  onPress={() => handlePress(cantare.id)}
+                />
+              ))}
+            </ScrollView>
+          </>
+        )}
         {veziCantare && (
           <>
             <View style={styles.songContainer}>
@@ -96,6 +111,15 @@ export default function SongList() {
 }
 
 const styles = StyleSheet.create({
+  songButton: { flex: 1, maxHeight: 40 },
+  songButtonTextContainer: {
+    flex: 1,
+    marginLeft: 10,
+    justifyContent: "center",
+  },
+  songButtonText: {
+    fontSize: 17,
+  },
   songContainer: {
     flex: 1,
     alignItems: "center",
@@ -117,6 +141,7 @@ const styles = StyleSheet.create({
   },
   songBackContainer: {
     flex: 2,
+    marginBottom: 10,
     justifyContent: "center",
   },
   text: {

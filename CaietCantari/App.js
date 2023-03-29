@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Button,
   StyleSheet,
@@ -6,6 +6,7 @@ import {
   View,
   Platform,
   StatusBar,
+  Pressable,
 } from "react-native";
 import Constants from "expo-constants";
 import NavBar from "./Components/NavBar";
@@ -14,25 +15,19 @@ import SearchBar from "./Components/SearchBar";
 import CustomButton from "./Components/CustomButton";
 
 const App = () => {
+  const ref = useRef(null);
+
+  const handlePress = (arg1) => {
+    console.log(arg1);
+  };
   return (
     <>
       <View style={styles.container}>
-        <CustomButton
-          style={styles.button}
-          titleStyle={styles.buttonText}
-          title="test"
-          onPress={() => {
-            console.log("Hi");
-          }}
-        />
-      </View>
-      {/* <View style={styles.container}>
         <NavBar />
         <View style={styles.listaCantari}>
           <SongList />
         </View>
       </View>
-      <SearchBar /> */}
     </>
   );
 };
