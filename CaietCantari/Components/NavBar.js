@@ -1,7 +1,16 @@
 import React from "react";
-import { Text, StyleSheet, View, SafeAreaView, StatusBar } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  StatusBar,
+  Platform,
+} from "react-native";
 import Constants from "expo-constants";
 import Separator from "./Separator";
+
+const smthForNavBar = Platform.OS == "android" ? 5 : 0;
 
 const NavBar = () => {
   return (
@@ -19,13 +28,14 @@ const styles = StyleSheet.create({
   mainDiv: {
     backgroundColor: "black", // raisin black: #1A181B
     color: "white",
-    paddingTop: Constants.statusBarHeight - StatusBar.currentHeight + 10,
-    paddingBottom: 15,
+    paddingTop:
+      Constants.statusBarHeight - StatusBar.currentHeight + smthForNavBar,
+    paddingBottom: 10,
     width: "100%",
   },
   text: {
     color: "white",
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
     marginLeft: 20,
   },
