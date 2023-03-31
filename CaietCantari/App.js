@@ -7,19 +7,15 @@ import {
   Platform,
   StatusBar,
   Pressable,
+  TextInput,
 } from "react-native";
 import Constants from "expo-constants";
 import NavBar from "./Components/NavBar";
 import SongList from "./Components/SongList";
-import SearchBar from "./Components/SearchBar";
+import BottomBar from "./Components/BottomBar";
 import CustomButton from "./Components/CustomButton";
 
 const App = () => {
-  const ref = useRef(null);
-
-  const handlePress = (arg1) => {
-    console.log(arg1);
-  };
   return (
     <>
       <View style={styles.container}>
@@ -37,10 +33,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "yellow",
+    backgroundColor: "",
   },
   listaCantari: {
-    flex: 1,
+    flex: 17,
     width: "100%",
   },
   button: {
