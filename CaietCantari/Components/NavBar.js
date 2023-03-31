@@ -10,7 +10,7 @@ import {
 import Constants from "expo-constants";
 import Separator from "./Separator";
 
-const smthForNavBar = Platform.OS == "android" ? 5 : 0;
+const smthForNavBar = Platform.OS == "ios" ? 0 : 5;
 
 const NavBar = () => {
   return (
