@@ -11,6 +11,8 @@ import {
 import CustomButton from "./CustomButton";
 // import KeyboardShift from "@fullstackcraft/react-native-keyboard-shift/lib/components/KeyboardShift";
 
+const songItemHeight = 40;
+
 const SongList = memo(() => {
   const [selectedSong, setSelectedSong] = useState([false, -1]);
 
@@ -23,8 +25,8 @@ const SongList = memo(() => {
 
   const getItemLayout = useCallback(
     (data, index) => ({
-      length: 2,
-      offset: 2 * index,
+      length: songItemHeight,
+      offset: songItemHeight * index,
       index,
     }),
     []
@@ -34,8 +36,9 @@ const SongList = memo(() => {
     console.log(index);
     return (
       <CustomButton
-        style={{}}
-        textStyle={{ color: "white" }}
+        style={styles.songButton}
+        textContainerStyle={styles.songButtonTextContainer}
+        textStyle={styles.songButtonText}
         onPress={() => setSelectedSong([true, item.content])}
         text={item.content
           .split("\n")[1]
@@ -70,14 +73,15 @@ const SongList = memo(() => {
   return (
     <View>
       <FlatList
+        indicatorStyle="white"
         data={Cantari}
         renderItem={renderSongItem}
         keyExtractor={getKeyItem}
         style={styles.flatList}
         initialNumToRender={900}
-        maxToRenderPerBatch={350}
-        windowSize={75}
-        // getItemLayout={getItemLayout}
+        maxToRenderPerBatch={450}
+        windowSize={150}
+        getItemLayout={getItemLayout}
       />
       {selectedSong && renderSongContent()}
     </View>
@@ -92,7 +96,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
   },
-  songButton: { flex: 1, maxHeight: 40, minHeight: 40 },
+  songButton: {
+    flex: 1,
+    maxHeight: songItemHeight,
+    minHeight: songItemHeight,
+  },
   songButtonTextContainer: {
     flex: 1,
     marginLeft: 10,
