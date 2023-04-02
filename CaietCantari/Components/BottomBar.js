@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Text, View } from "react-native";
 import Separator from "./Separator";
 
@@ -13,4 +13,4 @@ const BottomBar = (props) => {
   );
 };
 
-export default BottomBar;
+export default memo(BottomBar);

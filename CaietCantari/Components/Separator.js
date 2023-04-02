@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { View } from "react-native";
 
-export default function Separator() {
+const Separator = () => {
   return (
     <View
       style={{
@@ -11,4 +11,5 @@ export default function Separator() {
       }}
     />
   );
-}
+};
+export default memo(Separator);

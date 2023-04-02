@@ -1,12 +1,5 @@
-import React from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  SafeAreaView,
-  StatusBar,
-  Platform,
-} from "react-native";
+import React, { memo } from "react";
+import { Text, StyleSheet, View, StatusBar, Platform } from "react-native";
 import Constants from "expo-constants";
 import Separator from "./Separator";
 
@@ -41,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NavBar;
+export default memo(NavBar);
