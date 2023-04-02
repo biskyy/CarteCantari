@@ -19,6 +19,17 @@ const SongList = memo(() => {
     console.log("pressed back");
   };
 
+  const getKeyItem = useCallback((item, index) => index, []);
+
+  const getItemLayout = useCallback(
+    (data, index) => ({
+      length: 2,
+      offset: 2 * index,
+      index,
+    }),
+    []
+  );
+
   const renderSongItem = useCallback(({ item, index }) => {
     console.log(index);
     return (
@@ -61,8 +72,12 @@ const SongList = memo(() => {
       <FlatList
         data={Cantari}
         renderItem={renderSongItem}
-        keyExtractor={useCallback((item, index) => index, [])}
+        keyExtractor={getKeyItem}
         style={styles.flatList}
+        initialNumToRender={900}
+        maxToRenderPerBatch={350}
+        windowSize={75}
+        // getItemLayout={getItemLayout}
       />
       {selectedSong && renderSongContent()}
     </View>
