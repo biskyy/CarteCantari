@@ -6,7 +6,7 @@ const Separator = () => {
     <View
       style={{
         backgroundColor: "white",
-        height: 2,
+        height: 1,
         width: "100%",
       }}
     />
