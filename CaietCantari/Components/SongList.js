@@ -17,6 +17,7 @@ import CustomButton from "./CustomButton";
 import KeyboardShift from "@fullstackcraft/react-native-keyboard-shift/lib/components/KeyboardShift";
 import NavBar from "./NavBar";
 import Separator from "./Separator";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const songItemHeight = 40;
 
@@ -25,13 +26,38 @@ const SongList = memo(() => {
   const [searchQuery, setSearchQuery] = useState("");
   const [songs, setSongs] = useState(Cantari);
   const [textSize, setTextSize] = useState(20);
+  const textSizeKey = "textSizeKey";
 
-  const zoomIn = () => {
-    setTextSize(textSize + 2);
+  const zoomHandler = async (sign) => {
+    if (sign === "+") setTextSize(textSize + 2);
+    if (sign === "-") if (textSize > 2) setTextSize(textSize - 2);
+    try {
+      await AsyncStorage.setItem(textSizeKey, textSize.toString());
+    } catch (error) {
+      console.error(error);
+    }
   };
-  const zoomOut = () => {
-    if (textSize > 2) setTextSize(textSize - 2);
-  };
+
+  // const getFontSize = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem(textSizeKey);
+  //     if (value !== null) setTextSize(parseInt(value));
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  useEffect(() => {
+    async function getFontSize() {
+      try {
+        const value = await AsyncStorage.getItem(textSizeKey);
+        if (value !== null) setTextSize(parseInt(value));
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getFontSize();
+  }, []);
 
   const backEvent = () => {
     setSelectedSong([false, Cantari[0]]);
@@ -113,13 +139,17 @@ const SongList = memo(() => {
         <View style={styles.songBackContainer}>
           <View style={styles.bottomBarTextContainerSongScreen}>
             <CustomButton
-              onPress={zoomOut}
+              onPress={() => {
+                zoomHandler("-");
+              }}
               textContainerStyle={{ justifyContent: "center", flex: 1 }}
               text="Zoom Out"
               style={styles.songContentButton}
             />
             <CustomButton
-              onPress={zoomIn}
+              onPress={() => {
+                zoomHandler("+");
+              }}
               textContainerStyle={{ justifyContent: "center", flex: 1 }}
               text="Zoom In"
               style={styles.songContentButton}
