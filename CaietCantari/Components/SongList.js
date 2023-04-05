@@ -1,5 +1,5 @@
 import Cantari from "../Cantari.json";
-import React, { useState, memo, useCallback, useMemo, useEffect } from "react";
+import React, { useState, memo, useCallback, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,24 +9,21 @@ import {
   Modal,
   TextInput,
   KeyboardAvoidingView,
-  Keyboard,
-  VirtualizedList,
   ScrollView,
 } from "react-native";
 import CustomButton from "./CustomButton";
-import KeyboardShift from "@fullstackcraft/react-native-keyboard-shift/lib/components/KeyboardShift";
 import NavBar from "./NavBar";
 import Separator from "./Separator";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const songItemHeight = 40;
+const textSizeKey = "textSizeKey";
 
 const SongList = memo(() => {
   const [selectedSong, setSelectedSong] = useState([false, Cantari[0]]);
   const [searchQuery, setSearchQuery] = useState("");
   const [songs, setSongs] = useState(Cantari);
   const [textSize, setTextSize] = useState(20);
-  const textSizeKey = "textSizeKey";
 
   const zoomHandler = async (sign) => {
     if (sign === "+") setTextSize(textSize + 2);
@@ -37,15 +34,6 @@ const SongList = memo(() => {
       console.error(error);
     }
   };
-
-  // const getFontSize = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem(textSizeKey);
-  //     if (value !== null) setTextSize(parseInt(value));
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
 
   useEffect(() => {
     async function getFontSize() {
@@ -59,10 +47,7 @@ const SongList = memo(() => {
     getFontSize();
   }, []);
 
-  const backEvent = () => {
-    setSelectedSong([false, Cantari[0]]);
-    console.log("pressed back");
-  };
+  const backEvent = () => setSelectedSong([false, Cantari[0]]);
 
   const getKeyItem = useCallback((item, index) => index, []);
 
