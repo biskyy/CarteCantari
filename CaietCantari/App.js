@@ -1,19 +1,8 @@
-import React, { useRef } from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-  StatusBar,
-  Pressable,
-  TextInput,
-} from "react-native";
-import Constants from "expo-constants";
+require("react-devtools-core").connectToDevTools({ port: 19000 });
+import React from "react";
+import { StyleSheet, View } from "react-native";
 import NavBar from "./Components/NavBar";
 import SongList from "./Components/SongList";
-import BottomBar from "./Components/BottomBar";
-import CustomButton from "./Components/CustomButton";
 
 const App = () => {
   return (
@@ -38,16 +27,6 @@ const styles = StyleSheet.create({
   listaCantari: {
     flex: 17,
     width: "100%",
-  },
-  button: {
-    width: "50%",
-    height: 100,
-    backgroundColor: "black",
-  },
-  buttonText: {
-    color: "white",
-    backgroundColor: "red",
-    fontSize: 20,
   },
 });
 
