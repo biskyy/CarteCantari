@@ -10,6 +10,8 @@ import {
   TextInput,
   KeyboardAvoidingView,
   ScrollView,
+  TouchableOpacity,
+  Image,
 } from "react-native";
 import CustomButton from "./CustomButton";
 import NavBar from "./NavBar";
@@ -71,7 +73,8 @@ const SongList = memo(() => {
         text={item.content
           .split("\n")[1]
           .replace(". ", item.id + ". ")
-          .slice(1)}
+          .slice(1)
+          .replace(",", "")}
       />
     );
   }, []);
@@ -99,7 +102,8 @@ const SongList = memo(() => {
               {selectedSong[1].content
                 .split("\n")[1]
                 .replace(". ", selectedSong[1].id + ". ")
-                .slice(1)}
+                .slice(1)
+                .replace(",", "")}
             </Text>
           </View>
           <Separator />
@@ -123,29 +127,38 @@ const SongList = memo(() => {
         <Separator />
         <View style={styles.songBackContainer}>
           <View style={styles.bottomBarTextContainerSongScreen}>
-            <CustomButton
+            <TouchableOpacity
               onPress={() => {
                 zoomHandler("-");
               }}
-              textContainerStyle={{ justifyContent: "center", flex: 1 }}
-              text="Zoom Out"
               style={styles.songContentButton}
-            />
-            <CustomButton
+            >
+              <Image
+                style={{ width: 25, height: 25 }}
+                source={require("../assets/icons/zoom-out.png")}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() => {
                 zoomHandler("+");
               }}
-              textContainerStyle={{ justifyContent: "center", flex: 1 }}
-              text="Zoom In"
               style={styles.songContentButton}
-            />
+            >
+              <Image
+                style={{ width: 25, height: 25 }}
+                source={require("../assets/icons/zoom-in.png")}
+              />
+            </TouchableOpacity>
             <View style={styles.songContentButton} />
-            <CustomButton
+            <TouchableOpacity
               onPress={backEvent}
-              textContainerStyle={{ justifyContent: "center", flex: 1 }}
-              text="Back"
               style={styles.songContentButton}
-            />
+            >
+              <Image
+                style={{ width: 25, height: 25 }}
+                source={require("../assets/icons/undo.png")}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
