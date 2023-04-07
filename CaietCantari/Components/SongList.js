@@ -17,6 +17,11 @@ import CustomButton from "./CustomButton";
 import NavBar from "./NavBar";
 import Separator from "./Separator";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+
+const zoomInPNG = require("../assets/icons/zoom-in.png");
+const zoomOutPNG = require("../assets/icons/zoom-out.png");
+const undoPNG = require("../assets/icons/undo.png");
 
 const songItemHeight = 40;
 const textSizeKey = "textSizeKey";
@@ -25,6 +30,7 @@ const SongList = memo(() => {
   const [selectedSong, setSelectedSong] = useState([false, Cantari[0]]);
   const [searchQuery, setSearchQuery] = useState("");
   const [songs, setSongs] = useState(Cantari);
+  const [filteredSongs, setFilteredSongs] = useState([]);
   const [textSize, setTextSize] = useState(20);
 
   const zoomHandler = async (sign) => {
@@ -133,10 +139,7 @@ const SongList = memo(() => {
               }}
               style={styles.songContentButton}
             >
-              <Image
-                style={{ width: 25, height: 25 }}
-                source={require("../assets/icons/zoom-out.png")}
-              />
+              <Image style={{ width: 25, height: 25 }} source={zoomOutPNG} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -144,20 +147,14 @@ const SongList = memo(() => {
               }}
               style={styles.songContentButton}
             >
-              <Image
-                style={{ width: 25, height: 25 }}
-                source={require("../assets/icons/zoom-in.png")}
-              />
+              <Image style={{ width: 25, height: 25 }} source={zoomInPNG} />
             </TouchableOpacity>
             <View style={styles.songContentButton} />
             <TouchableOpacity
               onPress={backEvent}
               style={styles.songContentButton}
             >
-              <Image
-                style={{ width: 25, height: 25 }}
-                source={require("../assets/icons/undo.png")}
-              />
+              <Image style={{ width: 25, height: 25 }} source={undoPNG} />
             </TouchableOpacity>
           </View>
         </View>
@@ -167,17 +164,34 @@ const SongList = memo(() => {
 
   const onTextInputQueryChange = useCallback((query) => {
     setSearchQuery(query);
-    // console.log(query);
-    // const filteredData = songs.filter((song) =>
-    //   song.id.toString().includes(query)
-    // );
-    // setSongs(filteredData);
+    const filteredData = songs.filter(
+      (song) =>
+        song.id.toString().includes(query.toLowerCase()) ||
+        song.content
+          .toLowerCase()
+          .split("\n")[1]
+          .normalize("NFKD")
+          .replace(/[^\w\s.-_\/]/g, "")
+          .includes(query.toLowerCase())
+    );
+    setFilteredSongs(filteredData);
   }, []);
 
   const renderFilteredList = () => {
-    <Modal animationType="none" transparent={false} visible={searchQuery != ""}>
-      <Text>Test</Text>
-    </Modal>;
+    return (
+      <View style={{ flex: 99999 }}>
+        <FlatList
+          data={filteredSongs}
+          renderItem={renderSongItem}
+          keyExtractor={getKeyItem}
+          getItemLayout={getItemLayout}
+          initialNumToRender={50}
+          maxToRenderPerBatch={200}
+          windowSize={200}
+          extraData={searchQuery}
+        />
+      </View>
+    );
   };
 
   return (
@@ -188,9 +202,9 @@ const SongList = memo(() => {
         renderItem={renderSongItem}
         keyExtractor={getKeyItem}
         style={styles.flatList}
-        initialNumToRender={900}
-        maxToRenderPerBatch={450}
-        windowSize={900}
+        initialNumToRender={100}
+        maxToRenderPerBatch={900}
+        windowSize={450}
         getItemLayout={getItemLayout}
       />
       {searchQuery != "" && renderFilteredList()}
@@ -215,21 +229,24 @@ const SongList = memo(() => {
 const styles = StyleSheet.create({
   flatList: {
     backgroundColor: "black",
+    flex: 1,
   },
   container: {
-    flex: 1,
     backgroundColor: "black",
+    flex: 1,
   },
   songButton: {
     flex: 1,
     maxHeight: songItemHeight,
     minHeight: songItemHeight,
-  },
-  songButtonTextContainer: {
-    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },
+  // songButtonTextContainer: {
+  // flex: 1,
+  // marginLeft: 10,
+  // justifyContent: "center",
+  // },
   songButtonText: {
     fontSize: 17,
   },
