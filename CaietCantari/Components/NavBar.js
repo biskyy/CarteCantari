@@ -1,6 +1,9 @@
-import React from "react";
-import { Text, StyleSheet, View, SafeAreaView, StatusBar } from "react-native";
+import React, { memo } from "react";
+import { Text, StyleSheet, View, StatusBar, Platform } from "react-native";
 import Constants from "expo-constants";
+import Separator from "./Separator";
+
+const smthForNavBar = Platform.OS == "ios" ? 0 : 5;
 
 const NavBar = () => {
   return (
@@ -9,24 +12,26 @@ const NavBar = () => {
       <View style={styles.mainDiv}>
         <Text style={styles.text}>Caiet de Cantari</Text>
       </View>
+      <Separator />
     </>
   );
 };
 
 const styles = StyleSheet.create({
   mainDiv: {
-    backgroundColor: "black",
+    backgroundColor: "black", // raisin black: #1A181B
     color: "white",
-    paddingTop: Constants.statusBarHeight - StatusBar.currentHeight + 10,
-    paddingBottom: 15,
+    paddingTop:
+      Constants.statusBarHeight - StatusBar.currentHeight + smthForNavBar,
+    paddingBottom: 10,
     width: "100%",
   },
   text: {
     color: "white",
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
     marginLeft: 20,
   },
 });
 
-export default NavBar;
+export default memo(NavBar);

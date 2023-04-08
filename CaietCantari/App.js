@@ -1,24 +1,19 @@
+require("react-devtools-core").connectToDevTools({ port: 19000 });
 import React from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-  StatusBar,
-} from "react-native";
-import Constants from "expo-constants";
+import { StyleSheet, View } from "react-native";
 import NavBar from "./Components/NavBar";
-import ToateCantarile from "./Components/ToateCantarile";
+import SongList from "./Components/SongList";
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <NavBar />
-      <View style={styles.listaCantari}>
-        <ToateCantarile />
+    <>
+      <View style={styles.container}>
+        <NavBar />
+        <View style={styles.listaCantari}>
+          <SongList />
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
@@ -26,8 +21,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "",
   },
   listaCantari: {
+    flex: 17,
     width: "100%",
   },
 });
