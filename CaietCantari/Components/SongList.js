@@ -76,11 +76,7 @@ const SongList = memo(() => {
         textContainerStyle={styles.songButtonTextContainer}
         textStyle={styles.songButtonText}
         onPress={() => setSelectedSong([true, item])}
-        text={item.content
-          .split("\n")[1]
-          .replace(". ", item.id + ". ")
-          .slice(1)
-          .replace(",", "")}
+        text={item.title}
       />
     );
   }, []);
@@ -90,7 +86,7 @@ const SongList = memo(() => {
       <Modal
         animationType="none"
         visible={selectedSong[0]}
-        onRequestClose={() => console.log("test")}
+        onRequestClose={backEvent}
         transparent={false}
         style={{ backgroundColor: "black" }}
       >
@@ -105,11 +101,7 @@ const SongList = memo(() => {
               ]}
               numberOfLines={1}
             >
-              {selectedSong[1].content
-                .split("\n")[1]
-                .replace(". ", selectedSong[1].id + ". ")
-                .slice(1)
-                .replace(",", "")}
+              {selectedSong[1].title}
             </Text>
           </View>
           <Separator />
@@ -164,15 +156,23 @@ const SongList = memo(() => {
 
   const onTextInputQueryChange = useCallback((query) => {
     setSearchQuery(query);
+    const editedQuery = query
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[^\w\s.-_\/]/g, "");
     const filteredData = songs.filter(
       (song) =>
-        song.id.toString().includes(query.toLowerCase()) ||
+        song.id.toString().includes(editedQuery) ||
         song.content
           .toLowerCase()
-          .split("\n")[1]
           .normalize("NFKD")
           .replace(/[^\w\s.-_\/]/g, "")
-          .includes(query.toLowerCase())
+          .includes(editedQuery) ||
+        song.title
+          .toLowerCase()
+          .normalize("NFKD")
+          .replace(/[^\w\s.-_\/]/g, "")
+          .includes(editedQuery)
     );
     setFilteredSongs(filteredData);
   }, []);
@@ -185,8 +185,8 @@ const SongList = memo(() => {
           renderItem={renderSongItem}
           keyExtractor={getKeyItem}
           getItemLayout={getItemLayout}
-          initialNumToRender={50}
-          maxToRenderPerBatch={200}
+          initialNumToRender={20}
+          maxToRenderPerBatch={30}
           windowSize={200}
           extraData={searchQuery}
         />
@@ -202,7 +202,7 @@ const SongList = memo(() => {
         renderItem={renderSongItem}
         keyExtractor={getKeyItem}
         style={styles.flatList}
-        initialNumToRender={100}
+        initialNumToRender={450}
         maxToRenderPerBatch={900}
         windowSize={450}
         getItemLayout={getItemLayout}
