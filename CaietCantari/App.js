@@ -1,33 +1,30 @@
 require("react-devtools-core").connectToDevTools({ port: 19000 });
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import NavBar from "./Components/NavBar";
-import SongList from "./Components/SongList";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./Screens/HomeScreen";
+import SongDisplayScreen from "./Screens/SongDisplayScreen";
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <>
-      <View style={styles.container}>
-        <NavBar />
-        <View style={styles.listaCantari}>
-          <SongList />
-        </View>
-      </View>
-    </>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ header: () => <NavBar />, }}
+          />
+          <Stack.Screen
+            name="SongDisplay"
+            component={SongDisplayScreen}
+            options={{ header: () => <NavBar /> }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "",
-  },
-  listaCantari: {
-    flex: 17,
-    width: "100%",
-  },
-});
 
 export default App;

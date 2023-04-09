@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
 const CustomButton = (props) => {
   return (

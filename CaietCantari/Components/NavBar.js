@@ -2,14 +2,15 @@ import React, { memo } from "react";
 import { Text, StyleSheet, View, StatusBar, Platform } from "react-native";
 import Constants from "expo-constants";
 import Separator from "./Separator";
-
-const smthForNavBar = Platform.OS == "ios" ? 0 : 5;
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const NavBar = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <>
       <StatusBar barStyle={"light-content"} />
-      <View style={styles.mainDiv}>
+      <View style={[styles.mainDiv, { paddingTop: insets.top }]}>
         <Text style={styles.text}>Caiet de Cantari</Text>
       </View>
       <Separator />
@@ -19,11 +20,9 @@ const NavBar = () => {
 
 const styles = StyleSheet.create({
   mainDiv: {
-    backgroundColor: "black", // raisin black: #1A181B
+    backgroundColor: "#1A181B", // raisin black: #1A181B
     color: "white",
-    paddingTop:
-      Constants.statusBarHeight - StatusBar.currentHeight + smthForNavBar,
-    paddingBottom: 10,
+    paddingVertical: 10,
     width: "100%",
   },
   text: {
@@ -31,6 +30,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     marginLeft: 20,
+    backgroundColor: "red"
   },
 });
 
