@@ -1,14 +1,26 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import SongList from "../Components/SongList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useAtom } from "jotai";
+import { themeAtom } from "../Components/State";
 
 const HomeScreen = ({ navigation }) => {
+  const [theme] = useAtom(themeAtom)
   const insets = useSafeAreaInsets();
+  const bgColor = theme == "dark" ? "black" : "white"
 
   return (
     <>
-      <View style={[styles.container, { paddingBottom: insets.bottom }]}>
+      <View
+        style={[
+          styles.container,
+          {
+            paddingBottom: insets.bottom,
+            backgroundColor: bgColor,
+          },
+        ]}
+      >
         <View style={styles.listaCantari}>
           <SongList navigation={navigation} />
         </View>
@@ -22,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "black",
   },
   listaCantari: {
     flex: 17,

@@ -10,15 +10,26 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Separator from "../Components/Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useAtom } from "jotai";
+import { darkModeAtom, themeAtom } from "../Components/State";
 
-const zoomInPNG = require("../assets/icons/zoom-in.png");
-const zoomOutPNG = require("../assets/icons/zoom-out.png");
-const undoPNG = require("../assets/icons/undo.png");
+const lightZoomInPNG = require("../assets/icons/light-zoom-in.png");
+const darkZoomInPNG = require("../assets/icons/dark-zoom-in.png");
+const lightZoomOutPNG = require("../assets/icons/light-zoom-out.png");
+const darkZoomOutPNG = require("../assets/icons/dark-zoom-out.png");
+const lightUndoPNG = require("../assets/icons/light-undo.png");
+const darkUndoPNG = require("../assets/icons/dark-undo.png");
 const textSizeKey = "textSizeKey";
 
 const SongDisplayScreen = ({ route, navigation }) => {
   const { song } = route.params;
   const insets = useSafeAreaInsets();
+  const [theme] = useAtom(themeAtom);
+  const bgColor = theme == "dark" ? "black" : "white";
+  const txtColor = theme == "dark" ? "white" : "black";
+  const zoomInPNG = theme == "light" ? darkZoomInPNG : lightZoomInPNG;
+  const zoomOutPNG = theme == "light" ? darkZoomOutPNG : lightZoomOutPNG;
+  const undoPNG = theme == "light" ? darkUndoPNG : lightUndoPNG;
 
   const [textSize, setTextSize] = useState(20);
 
@@ -44,6 +55,56 @@ const SongDisplayScreen = ({ route, navigation }) => {
     getFontSize();
   }, []);
 
+  const styles = StyleSheet.create({
+    songContainer: {
+      flex: 24,
+      backgroundColor: bgColor,
+    },
+    songTitleContainer: {
+      flexGrow: 1,
+      width: "100%",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    songContentContainer: {
+      flex: 50,
+      width: "100%",
+      backgroundColor: bgColor,
+    },
+    songScrollViewContainer: {
+      flexGrow: 1,
+      alignItems: "center",
+    },
+    text: {
+      color: txtColor,
+      fontSize: 20,
+    },
+    titleText: {
+      fontWeight: "bold",
+    },
+    songBackContainer: {
+      backgroundColor: bgColor,
+      flex: 2,
+    },
+    bottomBarTextContainerSongScreen: {
+      backgroundColor: bgColor,
+      flex: 1,
+      flexDirection: "row",
+    },
+    songContentButton: {
+      flex: 1,
+      backgroundColor: bgColor,
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 20,
+    },
+    image: {
+      backgroundColor: bgColor,
+      width: 50,
+      height: 50,
+    },
+  });
+
   return (
     <>
       <View style={styles.songContainer}>
@@ -59,7 +120,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
             {song.title}
           </Text>
         </View>
-        <Separator />
+        <Separator backgroundColor={txtColor} />
         <View style={styles.songContentContainer}>
           <ScrollView
             indicatorStyle="white"
@@ -73,7 +134,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
           </ScrollView>
         </View>
       </View>
-      <Separator />
+      <Separator backgroundColor={txtColor} />
       <View
         style={[styles.songBackContainer, { paddingBottom: insets.bottom }]}
       >
@@ -84,7 +145,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
             }}
             style={styles.songContentButton}
           >
-            <Image style={{ width: 25, height: 25 }} source={zoomOutPNG} />
+            <Image style={styles.image} source={zoomOutPNG} />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -92,14 +153,14 @@ const SongDisplayScreen = ({ route, navigation }) => {
             }}
             style={styles.songContentButton}
           >
-            <Image style={{ width: 25, height: 25 }} source={zoomInPNG} />
+            <Image style={styles.image} source={zoomInPNG} />
           </TouchableOpacity>
           <View style={styles.songContentButton} />
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={styles.songContentButton}
           >
-            <Image style={{ width: 25, height: 25 }} source={undoPNG} />
+            <Image style={styles.image} source={undoPNG} />
           </TouchableOpacity>
         </View>
       </View>
@@ -108,47 +169,3 @@ const SongDisplayScreen = ({ route, navigation }) => {
 };
 
 export default SongDisplayScreen;
-
-const styles = StyleSheet.create({
-  songContainer: {
-    flex: 24,
-    backgroundColor: "black",
-  },
-  songTitleContainer: {
-    flexGrow: 1,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  songContentContainer: {
-    flex: 50,
-    width: "100%",
-    backgroundColor: "black",
-  },
-  songScrollViewContainer: {
-    flexGrow: 1,
-    alignItems: "center",
-  },
-  text: {
-    color: "white",
-    fontSize: 20,
-  },
-  titleText: {
-    fontWeight: "bold",
-  },
-  songBackContainer: {
-    backgroundColor: "black",
-    flex: 2,
-  },
-  bottomBarTextContainerSongScreen: {
-    backgroundColor: "black",
-    flex: 1,
-    flexDirection: "row",
-  },
-  songContentButton: {
-    flex: 1,
-    backgroundColor: "black",
-    alignItems: "center",
-    paddingVertical: 20,
-  },
-});

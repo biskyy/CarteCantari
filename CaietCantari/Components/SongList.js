@@ -1,5 +1,5 @@
 import Cantari from "../Cantari.json";
-import React, { useState, memo, useCallback } from "react";
+import React, { useState, memo, useCallback, useMemo, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -7,15 +7,66 @@ import {
   FlatList,
   TextInput,
   KeyboardAvoidingView,
-  Text
+  Text,
 } from "react-native";
 import CustomButton from "./CustomButton";
+import { useAtom } from "jotai";
+import { themeAtom } from "./State";
 
 const songItemHeight = 40;
 
 const SongList = memo((props) => {
+  const [theme, setTheme] = useAtom(themeAtom)
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
+
+  const bgColor = theme == "dark" ? "black" : "white";
+  const txtColor = theme == "dark" ? "white" : "black";
+
+  const styles = useMemo(
+    () =>
+      StyleSheet.create({
+        filteredflatList: {
+          backgroundColor: bgColor,
+          flex: 99999,
+        },
+        flatList: {
+          backgroundColor: bgColor,
+          flex: 1,
+        },
+        container: {
+          backgroundColor: bgColor,
+          flex: 1,
+        },
+        songButton: {
+          flex: 1,
+          maxHeight: songItemHeight,
+          minHeight: songItemHeight,
+          marginLeft: 10,
+          justifyContent: "center",
+        },
+        songButtonText: {
+          color: txtColor,
+          fontSize: 17,
+        },
+        textInput: {
+          height: 50,
+          paddingLeft: 15,
+          backgroundColor: bgColor,
+          color: txtColor,
+          width: "99%",
+          fontSize: 17,
+          borderWidth: 1,
+          borderColor: txtColor,
+          borderRadius: 10,
+        },
+        keyboardAvoidingView: {
+          backgroundColor: bgColor,
+          alignItems: "center",
+        },
+      }),
+    [theme]
+  );
 
   const getKeyItem = useCallback((item, index) => index, []);
 
@@ -29,7 +80,7 @@ const SongList = memo((props) => {
   );
 
   const renderSongItem = useCallback(({ item, index }) => {
-    console.log(index)
+    console.log(index);
     return (
       <CustomButton
         style={styles.songButton}
@@ -38,7 +89,21 @@ const SongList = memo((props) => {
           props.navigation.navigate("SongDisplay", { song: item });
         }}
         text={item.title}
-        />
+      />
+    );
+  }, [theme]);
+
+  const renderSongItemForFilteredList = useCallback(({ item, index }) => {
+    console.log("filtered list index:" + index);
+    return (
+      <CustomButton
+        style={styles.songButton}
+        textStyle={styles.songButtonText}
+        onPress={() => {
+          props.navigation.navigate("SongDisplay", { song: item });
+        }}
+        text={item.title}
+      />
     );
   }, []);
 
@@ -67,10 +132,10 @@ const SongList = memo((props) => {
 
   const renderFilteredList = () => {
     return (
-      <View style={{ flex: 99999 }}>
+      <View style={styles.filteredflatList}>
         <FlatList
           data={filteredSongs}
-          renderItem={renderSongItem}
+          renderItem={renderSongItemForFilteredList}
           keyExtractor={getKeyItem}
           getItemLayout={getItemLayout}
           initialNumToRender={20}
@@ -85,25 +150,25 @@ const SongList = memo((props) => {
   return (
     <View style={styles.container}>
       <FlatList
-        indicatorStyle="white"
+        indicatorStyle={txtColor}
         data={Cantari}
         renderItem={renderSongItem}
         keyExtractor={getKeyItem}
         style={styles.flatList}
-        initialNumToRender={450}
+        initialNumToRender={550}
         maxToRenderPerBatch={900}
         windowSize={450}
         getItemLayout={getItemLayout}
       />
       {searchQuery != "" && renderFilteredList()}
       <KeyboardAvoidingView
-        style={{ backgroundColor: "black" }}
+        style={styles.keyboardAvoidingView}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
       >
         <TextInput
           placeholder="Cauta o cantare"
-          placeholderTextColor="white"
+          placeholderTextColor={txtColor}
           value={searchQuery}
           onChangeText={onTextInputQueryChange}
           style={styles.textInput}
@@ -111,38 +176,6 @@ const SongList = memo((props) => {
       </KeyboardAvoidingView>
     </View>
   );
-});
-
-const styles = StyleSheet.create({
-  flatList: {
-    backgroundColor: "black",
-    flex: 1,
-  },
-  container: {
-    backgroundColor: "black",
-    flex: 1,
-  },
-  songButton: {
-    flex: 1,
-    maxHeight: songItemHeight,
-    minHeight: songItemHeight,
-    marginLeft: 10,
-    justifyContent: "center",
-  },
-  songButtonText: {
-    fontSize: 17,
-  },
-  textInput: {
-    height: 50,
-    paddingLeft: 15,
-    backgroundColor: "black",
-    color: "white",
-    width: "100%",
-    fontSize: 17,
-    borderWidth: 1,
-    borderColor: "white",
-    borderRadius: 10,
-  },
 });
 
 export default SongList;
