@@ -15,8 +15,10 @@ import { useAtom } from "jotai";
 
 const lightModeIcon = require("../assets/icons/light-mode-icon.png");
 const darkModeIcon = require("../assets/icons/dark-mode-icon.png");
+const darkHamburgerIcon = require("../assets/icons/dark-hamburger-menu.png");
+const lightHamburgerIcon = require("../assets/icons/light-hamburger-menu.png");
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [theme, setTheme] = useAtom(themeAtom);
   const insets = useSafeAreaInsets();
 
@@ -24,10 +26,10 @@ const NavBar = () => {
     try {
       if ((await AsyncStorage.getItem(themeButtonKey)) == "dark") {
         await AsyncStorage.setItem(themeButtonKey, "light");
-        setTheme("light")
+        setTheme("light");
       } else {
         await AsyncStorage.setItem(themeButtonKey, "dark");
-        setTheme("dark")
+        setTheme("dark");
       }
       console.log(await AsyncStorage.getItem(themeButtonKey));
     } catch (err) {
@@ -35,10 +37,16 @@ const NavBar = () => {
     }
   };
 
+  const handleHamburgerMenu = () => {
+    props.navigation.toggleDrawer();
+  };
+
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
-  const themeIcon = theme == "dark" ? darkModeIcon : lightModeIcon
-  const statusBarTheme = theme == "dark" ? "light-content" : "dark-content"
+  const themeIcon = theme == "dark" ? darkModeIcon : lightModeIcon;
+  const hamburgerIcon =
+    theme == "dark" ? lightHamburgerIcon : darkHamburgerIcon;
+  const statusBarTheme = theme == "dark" ? "light-content" : "dark-content";
 
   const styles = StyleSheet.create({
     mainDiv: {
@@ -52,22 +60,29 @@ const NavBar = () => {
       color: txtColor,
       fontSize: 25,
       margin: 10,
-      marginLeft: 15,
       fontWeight: "bold",
       flexGrow: 1,
       alignItems: "center",
       justifyContent: "center",
     },
     image: { maxHeight: 35, maxWidth: 35 },
-    darkModeButton: { flexGrow: 1, marginRight: 15 },
+    darkModeButton: { flexGrow: 1 },
   });
 
   return (
     <>
       <StatusBar barStyle={statusBarTheme} />
       <View style={[styles.mainDiv, { paddingTop: insets.top }]}>
+        {props.mainScreen && (
+          <TouchableOpacity
+            onPress={handleHamburgerMenu}
+            style={[styles.darkModeButton, styles.image, {marginLeft: 10}]}
+          >
+            <Image style={styles.image} source={hamburgerIcon} />
+          </TouchableOpacity>
+        )}
         <Text style={[styles.text]}>Caiet de Cantari</Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={async () => {
             await AsyncStorage.clear();
             console.log("cleared");
@@ -77,24 +92,24 @@ const NavBar = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={async () => {
-            console.log("-------------------------")
-            console.log("astorage: ")
+            console.log("-------------------------");
+            console.log("astorage: ");
             console.log(await AsyncStorage.getItem(themeButtonKey));
-            console.log("atom: ")
-            console.log(theme)
-            console.log("-------------------------")
+            console.log("atom: ");
+            console.log(theme);
+            console.log("-------------------------");
           }}
         >
           <Text style={{ color: txtColor }}>Get curr</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity
           onPress={handleDarkModeButton}
-          style={[styles.darkModeButton, styles.image]}
+          style={[styles.darkModeButton, styles.image, { marginRight: 10 }]}
         >
           <Image style={styles.image} source={themeIcon} />
         </TouchableOpacity>
       </View>
-      <Separator backgroundColor={txtColor}/>
+      <Separator backgroundColor={txtColor} />
     </>
   );
 };

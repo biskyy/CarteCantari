@@ -11,7 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Separator from "../Components/Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
-import { darkModeAtom, themeAtom } from "../Components/State";
+import { favoritesList, themeAtom } from "../Components/State";
 
 const lightZoomInPNG = require("../assets/icons/light-zoom-in.png");
 const darkZoomInPNG = require("../assets/icons/dark-zoom-in.png");
@@ -19,17 +19,22 @@ const lightZoomOutPNG = require("../assets/icons/light-zoom-out.png");
 const darkZoomOutPNG = require("../assets/icons/dark-zoom-out.png");
 const lightUndoPNG = require("../assets/icons/light-undo.png");
 const darkUndoPNG = require("../assets/icons/dark-undo.png");
+const darkStarPNG = require("../assets/icons/dark-star.png");
+const lightStarPNG = require("../assets/icons/light-star.png");
+const yellowStarPNG = require("../assets/icons/yellow-star.png");
 const textSizeKey = "textSizeKey";
 
 const SongDisplayScreen = ({ route, navigation }) => {
   const { song } = route.params;
   const insets = useSafeAreaInsets();
   const [theme] = useAtom(themeAtom);
+  const [favoriteSongs, setFavoriteSongs] = useAtom(favoritesList);
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
   const zoomInPNG = theme == "light" ? darkZoomInPNG : lightZoomInPNG;
   const zoomOutPNG = theme == "light" ? darkZoomOutPNG : lightZoomOutPNG;
   const undoPNG = theme == "light" ? darkUndoPNG : lightUndoPNG;
+  const starPNG = theme == "dark" ? lightStarPNG : darkStarPNG;
 
   const [textSize, setTextSize] = useState(20);
 
@@ -155,7 +160,23 @@ const SongDisplayScreen = ({ route, navigation }) => {
           >
             <Image style={styles.image} source={zoomInPNG} />
           </TouchableOpacity>
-          <View style={styles.songContentButton} />
+          <TouchableOpacity
+            onPress={() => {
+              if (favoriteSongs.includes(song))
+                setFavoriteSongs([
+                  ...favoriteSongs.filter((songToFilter) => {
+                    return songToFilter !== song;
+                  }),
+                ]);
+              else setFavoriteSongs([...favoriteSongs, song]);
+            }}
+            style={styles.songContentButton}
+          >
+            <Image
+              style={styles.image}
+              source={favoriteSongs.includes(song) ? yellowStarPNG : starPNG}
+            />
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={styles.songContentButton}

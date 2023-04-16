@@ -71,19 +71,26 @@ const Home = () => {
         drawerStyle: { backgroundColor: bgColor },
         drawerLabelStyle: { backgroundColor: bgColor, color: txtColor },
         drawerItemStyle: { backgroundColor: bgColor },
-        gestureHandlerProps: {},
       }}
       drawerContent={CustomDrawerContent}
     >
       <Drawer.Screen
         name="Caiet de cantari"
         component={MainScreen}
-        options={{ header: () => <NavBar /> }}
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
       />
       <Drawer.Screen
         name="Cantari favorite"
         component={FavoritesList}
-        options={{ header: () => <NavBar /> }}
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
       />
     </Drawer.Navigator>
   );

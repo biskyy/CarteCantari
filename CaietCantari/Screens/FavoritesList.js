@@ -1,13 +1,14 @@
 import React, { useMemo, useCallback } from "react";
 import { useAtom } from "jotai";
 import { favoritesList } from "../Components/State";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { themeAtom } from "../Components/State";
+import CustomButton from "../Components/CustomButton";
 
 const songItemHeight = 40;
 
-const FavoritesList = () => {
-  const [theme, setTheme] = useAtom(themeAtom);
+const FavoritesList = (props) => {
+  const [theme] = useAtom(themeAtom);
   const [favoriteSongs] = useAtom(favoritesList);
 
   const bgColor = theme == "dark" ? "black" : "white";
@@ -23,6 +24,7 @@ const FavoritesList = () => {
         flatList: {
           backgroundColor: bgColor,
           flex: 1,
+          marginLeft: 15,
         },
         container: {
           backgroundColor: bgColor,
@@ -32,7 +34,6 @@ const FavoritesList = () => {
           flex: 1,
           maxHeight: songItemHeight,
           minHeight: songItemHeight,
-          marginLeft: 10,
           justifyContent: "center",
         },
         songButtonText: {
@@ -87,10 +88,10 @@ const FavoritesList = () => {
   );
 
   return (
-    <>
+    <View style={{ backgroundColor: bgColor, flex: 1 }}>
       <FlatList
         indicatorStyle={txtColor}
-        data={favoriteSongs}
+        data={favoriteSongs.list}
         renderItem={renderSongItem}
         keyExtractor={getKeyItem}
         style={styles.flatList}
@@ -99,7 +100,7 @@ const FavoritesList = () => {
         windowSize={450}
         getItemLayout={getItemLayout}
       />
-    </>
+    </View>
   );
 };
 
