@@ -6,6 +6,7 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
+  Keyboard
 } from "react-native";
 import Separator from "./Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -38,6 +39,7 @@ const NavBar = (props) => {
   };
 
   const handleHamburgerMenu = () => {
+    Keyboard.dismiss()
     props.navigation.toggleDrawer();
   };
 

@@ -27,11 +27,6 @@ const SongList = memo((props) => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
-        filteredflatList: {
-          backgroundColor: bgColor,
-          flex: 99999,
-          marginLeft: 10,
-        },
         flatList: {
           backgroundColor: bgColor,
           flex: 1,
@@ -50,21 +45,6 @@ const SongList = memo((props) => {
         songButtonText: {
           color: txtColor,
           fontSize: 17,
-        },
-        textInput: {
-          height: 50,
-          paddingLeft: 15,
-          backgroundColor: bgColor,
-          color: txtColor,
-          width: "99%",
-          fontSize: 17,
-          borderWidth: 1,
-          borderColor: txtColor,
-          borderRadius: 10,
-        },
-        keyboardAvoidingView: {
-          backgroundColor: bgColor,
-          alignItems: "center",
         },
       }),
     [theme]
@@ -98,63 +78,10 @@ const SongList = memo((props) => {
     [theme]
   );
 
-  const renderSongItemForFilteredList = useCallback(({ item, index }) => {
-    console.log("filtered list index:" + index);
-    return (
-      <CustomButton
-        style={styles.songButton}
-        textStyle={styles.songButtonText}
-        onPress={() => {
-          props.navigation.navigate("SongDisplay", { song: item });
-        }}
-        text={item.title}
-      />
-    );
-  }, []);
-
-  const onTextInputQueryChange = useCallback((query) => {
-    setSearchQuery(query);
-    const editedQuery = query
-      .toLowerCase()
-      .normalize("NFKD")
-      .replace(/[^\w\s.-_\/]/g, "");
-    const filteredData = Cantari.filter(
-      (song) =>
-        song.id.toString().includes(editedQuery) ||
-        song.content
-          .toLowerCase()
-          .normalize("NFKD")
-          .replace(/[^\w\s.-_\/]/g, "")
-          .includes(editedQuery) ||
-        song.title
-          .toLowerCase()
-          .normalize("NFKD")
-          .replace(/[^\w\s.-_\/]/g, "")
-          .includes(editedQuery)
-    );
-    setFilteredSongs(filteredData);
-  }, []);
-
-  const renderFilteredList = () => {
-    return (
-      <View style={styles.filteredflatList}>
-        <FlatList
-          data={filteredSongs}
-          renderItem={renderSongItemForFilteredList}
-          keyExtractor={getKeyItem}
-          getItemLayout={getItemLayout}
-          initialNumToRender={20}
-          maxToRenderPerBatch={30}
-          windowSize={200}
-          extraData={searchQuery}
-        />
-      </View>
-    );
-  };
-
   return (
     <View style={styles.container}>
       <FlatList
+        keyboardShouldPersistTaps="handled"
         indicatorStyle={txtColor}
         data={Cantari}
         renderItem={renderSongItem}

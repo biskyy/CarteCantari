@@ -112,6 +112,7 @@ const SearchBar = (props) => {
     return (
       <View style={styles.filteredflatList}>
         <FlatList
+          keyboardShouldPersistTaps="handled"
           data={filteredSongs}
           renderItem={renderSongItemForFilteredList}
           keyExtractor={getKeyItem}

@@ -94,6 +94,7 @@ const FavoritesList = (props) => {
   return (
     <View style={{ backgroundColor: bgColor, flex: 1, paddingBottom: insets.bottom }}>
       <FlatList
+        keyboardShouldPersistTaps='handled'
         indicatorStyle={txtColor}
         data={favoriteSongs.list}
         renderItem={renderSongItem}
