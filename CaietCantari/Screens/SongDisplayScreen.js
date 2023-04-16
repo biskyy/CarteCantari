@@ -60,6 +60,18 @@ const SongDisplayScreen = ({ route, navigation }) => {
     getFontSize();
   }, []);
 
+  const handleStarButton = () => {
+    if (favoriteSongs.list.includes(song))
+      setFavoriteSongs({
+        list: [
+          ...favoriteSongs.list.filter((songToFilter) => {
+            return songToFilter !== song;
+          }),
+        ],
+      });
+    else setFavoriteSongs({list: [...favoriteSongs.list, song]});
+  };
+
   const styles = StyleSheet.create({
     songContainer: {
       flex: 24,
@@ -161,20 +173,14 @@ const SongDisplayScreen = ({ route, navigation }) => {
             <Image style={styles.image} source={zoomInPNG} />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {
-              if (favoriteSongs.includes(song))
-                setFavoriteSongs([
-                  ...favoriteSongs.filter((songToFilter) => {
-                    return songToFilter !== song;
-                  }),
-                ]);
-              else setFavoriteSongs([...favoriteSongs, song]);
-            }}
+            onPress={handleStarButton}
             style={styles.songContentButton}
           >
             <Image
               style={styles.image}
-              source={favoriteSongs.includes(song) ? yellowStarPNG : starPNG}
+              source={
+                favoriteSongs.list.includes(song) ? yellowStarPNG : starPNG
+              }
             />
           </TouchableOpacity>
           <TouchableOpacity
