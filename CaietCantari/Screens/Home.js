@@ -1,10 +1,10 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import SongList from "../Components/SongList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
 import { themeAtom } from "../Components/State";
-import { DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import FavoritesList from "./FavoritesList";
 import {
   DrawerContentScrollView,
@@ -69,7 +69,7 @@ const Home = () => {
       initialRouteName="Caiet de cantari"
       screenOptions={{
         drawerStyle: { backgroundColor: bgColor },
-        drawerLabelStyle: { backgroundColor: bgColor, color: txtColor },
+        drawerLabelStyle: { color: txtColor },
         drawerItemStyle: { backgroundColor: bgColor },
       }}
       drawerContent={CustomDrawerContent}
