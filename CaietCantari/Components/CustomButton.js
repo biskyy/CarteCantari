@@ -1,22 +1,17 @@
 import React, { memo } from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { themeAtom } from "./State";
-import { useAtom } from "jotai";
-
+import { Text, TouchableOpacity } from "react-native";
 
 const CustomButton = (props) => {
-  // const [theme] = useAtom(themeAtom)
-  // const txtColor = theme == "dark" ? "white" : "black"
-  const txtColor="white"
-
-  const styles = StyleSheet.create({
-    txt: {
-      color: txtColor,
-    },
-  });
   return (
     <>
-      <TouchableOpacity onPress={props.onPress} style={props.style}>
+      <TouchableOpacity
+        onPressIn={(e) => (this.touchX = e.nativeEvent.pageX)}
+        onPress={(e) => {
+          if (this.touchX - e.nativeEvent.pageX < -50) return;
+          else props.onPress();
+        }}
+        style={props.style}
+      >
         <Text style={[props.textStyle]}>{props.text}</Text>
       </TouchableOpacity>
     </>
