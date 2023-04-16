@@ -1,4 +1,5 @@
 import Cantari from "../Cantari.json";
+import CantariBER from "../CantariBER.json"
 import React, { useState, memo, useCallback, useMemo, useEffect } from "react";
 import {
   StyleSheet,
@@ -20,6 +21,7 @@ const SongList = memo((props) => {
   const [theme, setTheme] = useAtom(themeAtom);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
+  const Cantari2 = Cantari.concat(CantariBER)
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
@@ -83,16 +85,15 @@ const SongList = memo((props) => {
       <FlatList
         keyboardShouldPersistTaps="handled"
         indicatorStyle={txtColor}
-        data={Cantari}
+        data={Cantari2}
         renderItem={renderSongItem}
         keyExtractor={getKeyItem}
         style={styles.flatList}
-        initialNumToRender={550}
-        maxToRenderPerBatch={900}
-        windowSize={450}
+        maxToRenderPerBatch={1}
+        windowSize={Platform.OS == "ios" ? 2 : 1}
         getItemLayout={getItemLayout}
       />
-      <SearchBar navigation={props.navigation} list={Cantari} atom={false} />
+      <SearchBar navigation={props.navigation} list={Cantari2} atom={false} />
     </View>
   );
 });

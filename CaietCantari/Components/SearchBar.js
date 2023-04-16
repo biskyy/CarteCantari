@@ -47,6 +47,7 @@ const SearchBar = (props) => {
         },
         songButton: {
           flex: 1,
+          backgroundColor: bgColor,
           maxHeight: songItemHeight,
           minHeight: songItemHeight,
           justifyContent: "center",
@@ -70,19 +71,22 @@ const SearchBar = (props) => {
     []
   );
 
-  const renderSongItemForFilteredList = useCallback(({ item, index }) => {
-    console.log("filtered list index:" + index);
-    return (
-      <CustomButton
-        style={styles.songButton}
-        textStyle={styles.songButtonText}
-        onPress={() => {
-          props.navigation.navigate("SongDisplay", { song: item });
-        }}
-        text={item.title}
-      />
-    );
-  }, []);
+  const renderSongItemForFilteredList = useCallback(
+    ({ item, index }) => {
+      console.log("filtered list index:" + index);
+      return (
+        <CustomButton
+          style={styles.songButton}
+          textStyle={styles.songButtonText}
+          onPress={() => {
+            props.navigation.navigate("SongDisplay", { song: item });
+          }}
+          text={item.title}
+        />
+      );
+    },
+    [theme]
+  );
 
   const onTextInputQueryChange = (query) => {
     setSearchQuery(query);
@@ -117,9 +121,8 @@ const SearchBar = (props) => {
           renderItem={renderSongItemForFilteredList}
           keyExtractor={getKeyItem}
           getItemLayout={getItemLayout}
-          initialNumToRender={20}
-          maxToRenderPerBatch={30}
-          windowSize={200}
+          maxToRenderPerBatch={1}
+          windowSize={Platform.OS == "ios" ? 2 : 1}
           extraData={searchQuery}
         />
       </View>

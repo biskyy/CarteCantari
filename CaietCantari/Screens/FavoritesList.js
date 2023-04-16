@@ -100,9 +100,8 @@ const FavoritesList = (props) => {
         renderItem={renderSongItem}
         keyExtractor={getKeyItem}
         style={styles.flatList}
-        initialNumToRender={550}
-        maxToRenderPerBatch={900}
-        windowSize={450}
+        maxToRenderPerBatch={1}
+        windowSize={Platform.OS == "ios" ? 2 : 1}
         getItemLayout={getItemLayout}
       />
       <SearchBar navigation={props.navigation} list={favoriteSongs} atom={true}/>
