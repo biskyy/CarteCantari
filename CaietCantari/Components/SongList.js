@@ -16,7 +16,7 @@ import { themeAtom } from "./State";
 const songItemHeight = 40;
 
 const SongList = memo((props) => {
-  const [theme, setTheme] = useAtom(themeAtom)
+  const [theme, setTheme] = useAtom(themeAtom);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
 
@@ -33,6 +33,7 @@ const SongList = memo((props) => {
         flatList: {
           backgroundColor: bgColor,
           flex: 1,
+          marginLeft: 15,
         },
         container: {
           backgroundColor: bgColor,
@@ -42,7 +43,6 @@ const SongList = memo((props) => {
           flex: 1,
           maxHeight: songItemHeight,
           minHeight: songItemHeight,
-          marginLeft: 10,
           justifyContent: "center",
         },
         songButtonText: {
@@ -79,19 +79,22 @@ const SongList = memo((props) => {
     []
   );
 
-  const renderSongItem = useCallback(({ item, index }) => {
-    console.log(index);
-    return (
-      <CustomButton
-        style={styles.songButton}
-        textStyle={styles.songButtonText}
-        onPress={() => {
-          props.navigation.navigate("SongDisplay", { song: item });
-        }}
-        text={item.title}
-      />
-    );
-  }, [theme]);
+  const renderSongItem = useCallback(
+    ({ item, index }) => {
+      console.log(index);
+      return (
+        <CustomButton
+          style={styles.songButton}
+          textStyle={styles.songButtonText}
+          onPress={() => {
+            props.navigation.navigate("SongDisplay", { song: item });
+          }}
+          text={item.title}
+        />
+      );
+    },
+    [theme]
+  );
 
   const renderSongItemForFilteredList = useCallback(({ item, index }) => {
     console.log("filtered list index:" + index);
