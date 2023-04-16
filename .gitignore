@@ -12,7 +12,8 @@ web-build/
 .prettierrc
 android-app/
 eas.json
-
+CarteCantariCarol/
+CarteCantariCarol.zip
 # macOS
 .DS_Store
 
