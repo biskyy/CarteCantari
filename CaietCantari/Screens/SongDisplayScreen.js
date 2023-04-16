@@ -69,7 +69,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
           }),
         ],
       });
-    else setFavoriteSongs({list: [...favoriteSongs.list, song]});
+    else setFavoriteSongs({ list: [...favoriteSongs.list, song] });
   };
 
   const styles = StyleSheet.create({

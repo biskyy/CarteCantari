@@ -1,25 +1,23 @@
-import Cantari from "../Cantari.json";
-import React, { useState, memo, useCallback, useMemo, useEffect } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import {
-  StyleSheet,
-  View,
-  Platform,
-  FlatList,
-  TextInput,
   KeyboardAvoidingView,
-  Text,
+  TextInput,
+  View,
+  FlatList,
+  StyleSheet,
 } from "react-native";
 import CustomButton from "./CustomButton";
 import { useAtom } from "jotai";
-import { themeAtom } from "./State";
-import SearchBar from "./SearchBar";
+import { favoritesList, themeAtom } from "./State";
 
 const songItemHeight = 40;
 
-const SongList = memo((props) => {
-  const [theme, setTheme] = useAtom(themeAtom);
+const SearchBar = (props) => {
+  const [theme] = useAtom(themeAtom);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
+  const [favoriteSongs] = useAtom(favoritesList);
+  const songList = props.atom ? props.list.list : props.list;
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
@@ -31,25 +29,6 @@ const SongList = memo((props) => {
           backgroundColor: bgColor,
           flex: 99999,
           marginLeft: 10,
-        },
-        flatList: {
-          backgroundColor: bgColor,
-          flex: 1,
-          marginLeft: 10,
-        },
-        container: {
-          backgroundColor: bgColor,
-          flex: 1,
-        },
-        songButton: {
-          flex: 1,
-          maxHeight: songItemHeight,
-          minHeight: songItemHeight,
-          justifyContent: "center",
-        },
-        songButtonText: {
-          color: txtColor,
-          fontSize: 17,
         },
         textInput: {
           height: 50,
@@ -66,6 +45,16 @@ const SongList = memo((props) => {
           backgroundColor: bgColor,
           alignItems: "center",
         },
+        songButton: {
+          flex: 1,
+          maxHeight: songItemHeight,
+          minHeight: songItemHeight,
+          justifyContent: "center",
+        },
+        songButtonText: {
+          color: txtColor,
+          fontSize: 17,
+        },
       }),
     [theme]
   );
@@ -79,23 +68,6 @@ const SongList = memo((props) => {
       index,
     }),
     []
-  );
-
-  const renderSongItem = useCallback(
-    ({ item, index }) => {
-      console.log(index);
-      return (
-        <CustomButton
-          style={styles.songButton}
-          textStyle={styles.songButtonText}
-          onPress={() => {
-            props.navigation.navigate("SongDisplay", { song: item });
-          }}
-          text={item.title}
-        />
-      );
-    },
-    [theme]
   );
 
   const renderSongItemForFilteredList = useCallback(({ item, index }) => {
@@ -112,14 +84,14 @@ const SongList = memo((props) => {
     );
   }, []);
 
-  const onTextInputQueryChange = useCallback((query) => {
+  const onTextInputQueryChange = (query) => {
     setSearchQuery(query);
     const editedQuery = query
       .toLowerCase()
       .normalize("NFKD")
       .replace(/[^\w\s.-_\/]/g, "");
-    const filteredData = Cantari.filter(
-      (song) =>
+    const filteredData = songList.filter((song) => {
+      return (
         song.id.toString().includes(editedQuery) ||
         song.content
           .toLowerCase()
@@ -131,9 +103,10 @@ const SongList = memo((props) => {
           .normalize("NFKD")
           .replace(/[^\w\s.-_\/]/g, "")
           .includes(editedQuery)
-    );
+      );
+    });
     setFilteredSongs(filteredData);
-  }, []);
+  };
 
   const renderFilteredList = () => {
     return (
@@ -153,21 +126,23 @@ const SongList = memo((props) => {
   };
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        indicatorStyle={txtColor}
-        data={Cantari}
-        renderItem={renderSongItem}
-        keyExtractor={getKeyItem}
-        style={styles.flatList}
-        initialNumToRender={550}
-        maxToRenderPerBatch={900}
-        windowSize={450}
-        getItemLayout={getItemLayout}
-      />
-      <SearchBar navigation={props.navigation} list={Cantari} atom={false} />
-    </View>
+    <>
+      {searchQuery != "" && renderFilteredList()}
+      <KeyboardAvoidingView
+        style={styles.keyboardAvoidingView}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+      >
+        <TextInput
+          placeholder="Cauta o cantare"
+          placeholderTextColor={txtColor}
+          value={searchQuery}
+          onChangeText={onTextInputQueryChange}
+          style={styles.textInput}
+        />
+      </KeyboardAvoidingView>
+    </>
   );
-});
+};
 
-export default SongList;
+export default SearchBar;

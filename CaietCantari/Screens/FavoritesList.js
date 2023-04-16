@@ -4,12 +4,15 @@ import { favoritesList } from "../Components/State";
 import { FlatList, StyleSheet, View } from "react-native";
 import { themeAtom } from "../Components/State";
 import CustomButton from "../Components/CustomButton";
+import SearchBar from "../Components/SearchBar";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const songItemHeight = 40;
 
 const FavoritesList = (props) => {
   const [theme] = useAtom(themeAtom);
   const [favoriteSongs] = useAtom(favoritesList);
+  const insets = useSafeAreaInsets()
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
@@ -73,6 +76,7 @@ const FavoritesList = (props) => {
   const renderSongItem = useCallback(
     ({ item, index }) => {
       console.log(index);
+      // console.log(item.title)
       return (
         <CustomButton
           style={styles.songButton}
@@ -88,7 +92,7 @@ const FavoritesList = (props) => {
   );
 
   return (
-    <View style={{ backgroundColor: bgColor, flex: 1 }}>
+    <View style={{ backgroundColor: bgColor, flex: 1, paddingBottom: insets.bottom }}>
       <FlatList
         indicatorStyle={txtColor}
         data={favoriteSongs.list}
@@ -100,6 +104,7 @@ const FavoritesList = (props) => {
         windowSize={450}
         getItemLayout={getItemLayout}
       />
+      <SearchBar navigation={props.navigation} list={favoriteSongs} atom={true}/>
     </View>
   );
 };
