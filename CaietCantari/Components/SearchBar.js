@@ -5,12 +5,17 @@ import {
   View,
   FlatList,
   StyleSheet,
+  Text,
+  Image,
 } from "react-native";
 import CustomButton from "./CustomButton";
 import { useAtom } from "jotai";
 import { favoritesList, themeAtom } from "./State";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const songItemHeight = 40;
+const darkClearPNG = require("../assets/icons/dark-clear.png");
+const lightClearPNG = require("../assets/icons/light-clear.png");
 
 const SearchBar = (props) => {
   const [theme] = useAtom(themeAtom);
@@ -18,6 +23,7 @@ const SearchBar = (props) => {
   const [filteredSongs, setFilteredSongs] = useState([]);
   const [favoriteSongs] = useAtom(favoritesList);
   const songList = props.atom ? props.list.list : props.list;
+  const clearPNG = theme == "dark" ? lightClearPNG : darkClearPNG;
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
@@ -30,21 +36,6 @@ const SearchBar = (props) => {
           flex: 99999,
           marginLeft: 10,
         },
-        textInput: {
-          height: 50,
-          paddingLeft: 15,
-          backgroundColor: bgColor,
-          color: txtColor,
-          width: "99%",
-          fontSize: 17,
-          borderWidth: 1,
-          borderColor: txtColor,
-          borderRadius: 10,
-        },
-        keyboardAvoidingView: {
-          backgroundColor: bgColor,
-          alignItems: "center",
-        },
         songButton: {
           flex: 1,
           backgroundColor: bgColor,
@@ -55,6 +46,42 @@ const SearchBar = (props) => {
         songButtonText: {
           color: txtColor,
           fontSize: 17,
+        },
+        keyboardAvoidingView: {
+          backgroundColor: bgColor,
+          alignItems: "center",
+          height: 50,
+        },
+        textInputContainer: {
+          height: 50,
+          flexDirection: "row",
+          backgroundColor: bgColor,
+          width: "99%",
+          borderWidth: 1,
+          borderColor: txtColor,
+          borderRadius: 10,
+        },
+        textInput: {
+          // height: 50,
+          flex: 1,
+          paddingLeft: 15,
+          color: txtColor,
+          fontSize: 17,
+          backgroundColor: bgColor,
+          borderColor: bgColor,
+          borderRadius: 12,
+        },
+        touchable: {
+          maxHeight: "100%",
+          width: 50,
+          backgroundColor: bgColor,
+          borderRadius: 12,
+        },
+        image: {
+          maxHeight: "100%",
+          maxWidth: 50,
+          backgroundColor: bgColor,
+          borderRadius: 12,
         },
       }),
     [theme]
@@ -135,15 +162,25 @@ const SearchBar = (props) => {
       <KeyboardAvoidingView
         style={styles.keyboardAvoidingView}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 150 : 0}
       >
-        <TextInput
-          placeholder="Cauta o cantare"
-          placeholderTextColor={txtColor}
-          value={searchQuery}
-          onChangeText={onTextInputQueryChange}
-          style={styles.textInput}
-        />
+        <View style={styles.textInputContainer}>
+          <TextInput
+            placeholder="Cauta o cantare"
+            placeholderTextColor={txtColor}
+            value={searchQuery}
+            onChangeText={onTextInputQueryChange}
+            style={styles.textInput}
+          />
+          {searchQuery != "" && (
+            <TouchableOpacity
+              style={styles.touchable}
+              onPress={() => setSearchQuery("")}
+            >
+              <Image style={styles.image} source={clearPNG} />
+            </TouchableOpacity>
+          )}
+        </View>
       </KeyboardAvoidingView>
     </>
   );
