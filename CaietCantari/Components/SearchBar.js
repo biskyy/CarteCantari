@@ -1,17 +1,15 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import {
   KeyboardAvoidingView,
   TextInput,
   View,
-  FlatList,
   StyleSheet,
-  Text,
   Image,
 } from "react-native";
-import CustomButton from "./CustomButton";
 import { useAtom } from "jotai";
-import { favoritesList, themeAtom } from "./State";
+import { themeAtom } from "./State";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import CustomList from "./CustomList";
 
 const songItemHeight = 40;
 const darkClearPNG = require("../assets/icons/dark-clear.png");
@@ -21,7 +19,6 @@ const SearchBar = (props) => {
   const [theme] = useAtom(themeAtom);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
-  const [favoriteSongs] = useAtom(favoritesList);
   const songList = props.atom ? props.list.list : props.list;
   const clearPNG = theme == "dark" ? lightClearPNG : darkClearPNG;
 
@@ -34,18 +31,6 @@ const SearchBar = (props) => {
         filteredflatList: {
           backgroundColor: bgColor,
           flex: 99999,
-          marginLeft: 10,
-        },
-        songButton: {
-          flex: 1,
-          backgroundColor: bgColor,
-          maxHeight: songItemHeight,
-          minHeight: songItemHeight,
-          justifyContent: "center",
-        },
-        songButtonText: {
-          color: txtColor,
-          fontSize: 17,
         },
         keyboardAvoidingView: {
           backgroundColor: bgColor,
@@ -62,7 +47,6 @@ const SearchBar = (props) => {
           borderRadius: 10,
         },
         textInput: {
-          // height: 50,
           flex: 1,
           paddingLeft: 15,
           color: txtColor,
@@ -84,34 +68,6 @@ const SearchBar = (props) => {
           borderRadius: 12,
         },
       }),
-    [theme]
-  );
-
-  const getKeyItem = useCallback((item, index) => index, []);
-
-  const getItemLayout = useCallback(
-    (data, index) => ({
-      length: songItemHeight,
-      offset: songItemHeight * index,
-      index,
-    }),
-    []
-  );
-
-  const renderSongItemForFilteredList = useCallback(
-    ({ item, index }) => {
-      console.log("filtered list index:" + index);
-      return (
-        <CustomButton
-          style={styles.songButton}
-          textStyle={styles.songButtonText}
-          onPress={() => {
-            props.navigation.navigate("SongDisplay", { song: item });
-          }}
-          text={item.title}
-        />
-      );
-    },
     [theme]
   );
 
@@ -142,16 +98,7 @@ const SearchBar = (props) => {
   const renderFilteredList = () => {
     return (
       <View style={styles.filteredflatList}>
-        <FlatList
-          keyboardShouldPersistTaps="handled"
-          data={filteredSongs}
-          renderItem={renderSongItemForFilteredList}
-          keyExtractor={getKeyItem}
-          getItemLayout={getItemLayout}
-          maxToRenderPerBatch={1}
-          windowSize={Platform.OS == "ios" ? 2 : 1}
-          extraData={searchQuery}
-        />
+        <CustomList data={filteredSongs} navigation={props.navigation} />
       </View>
     );
   };

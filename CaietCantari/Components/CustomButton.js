@@ -11,6 +11,7 @@ const CustomButton = (props) => {
           else props.onPress();
         }}
         style={props.style}
+        disabled={props.disabled}
       >
         <Text style={[props.textStyle]}>{props.text}</Text>
       </TouchableOpacity>
