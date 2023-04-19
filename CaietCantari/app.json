@@ -25,10 +25,6 @@
       },
       "package": "com.biskyy.CaietCantari"
     },
-    "web": {
-      "favicon": "./assets/favicon.png",
-      "bundler": "metro"
-    },
     "extra": {
       "eas": {
         "projectId": "d9ccfd41-f97f-4af9-8bb6-d691b49b63ac"

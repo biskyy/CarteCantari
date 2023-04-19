@@ -1,4 +1,3 @@
-require("react-devtools-core").connectToDevTools({ port: 19000 });
 import React, { useEffect, useState } from "react";
 import NavBar from "./Components/NavBar";
 
