@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./Components/NavBar";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import Home from "./Screens/Home";
 import SongDisplayScreen from "./Screens/SongDisplayScreen";
-const Stack = createNativeStackNavigator();
-import { Image, Text, View } from "react-native";
+import NavBar from "./Components/NavBar";
+
+import { Image, View } from "react-native";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { themeButtonKey } from "./Components/State";
 import { themeAtom } from "./Components/State";
 import { useAtom } from "jotai";
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [theme, setTheme] = useAtom(themeAtom);
