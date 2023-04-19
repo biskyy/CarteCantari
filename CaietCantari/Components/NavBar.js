@@ -6,7 +6,7 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
 } from "react-native";
 import Separator from "./Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -14,10 +14,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { themeAtom, themeButtonKey } from "./State";
 import { useAtom } from "jotai";
 
-const lightModeIcon = require("../assets/icons/light-mode-icon.png");
-const darkModeIcon = require("../assets/icons/dark-mode-icon.png");
-const darkHamburgerIcon = require("../assets/icons/dark-hamburger-menu.png");
-const lightHamburgerIcon = require("../assets/icons/light-hamburger-menu.png");
+const lightModeIcon = require("../assets/icons/light-mode-icon-min.png");
+const darkModeIcon = require("../assets/icons/dark-mode-icon-min.png");
+const darkHamburgerIcon = require("../assets/icons/dark-hamburger-menu-min.png");
+const lightHamburgerIcon = require("../assets/icons/light-hamburger-menu-min.png");
 
 const NavBar = (props) => {
   const [theme, setTheme] = useAtom(themeAtom);
@@ -32,14 +32,13 @@ const NavBar = (props) => {
         await AsyncStorage.setItem(themeButtonKey, "dark");
         setTheme("dark");
       }
-      console.log(await AsyncStorage.getItem(themeButtonKey));
     } catch (err) {
       console.error(err);
     }
   };
 
   const handleHamburgerMenu = () => {
-    Keyboard.dismiss()
+    Keyboard.dismiss();
     props.navigation.toggleDrawer();
   };
 
@@ -78,7 +77,7 @@ const NavBar = (props) => {
         {props.mainScreen && (
           <TouchableOpacity
             onPress={handleHamburgerMenu}
-            style={[styles.darkModeButton, styles.image, {marginLeft: 10}]}
+            style={[styles.darkModeButton, styles.image, { marginLeft: 10 }]}
           >
             <Image style={styles.image} source={hamburgerIcon} />
           </TouchableOpacity>

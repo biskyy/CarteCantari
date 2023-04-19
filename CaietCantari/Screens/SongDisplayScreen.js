@@ -13,15 +13,15 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
 import { favoritesList, themeAtom } from "../Components/State";
 
-const lightZoomInPNG = require("../assets/icons/light-zoom-in.png");
-const darkZoomInPNG = require("../assets/icons/dark-zoom-in.png");
-const lightZoomOutPNG = require("../assets/icons/light-zoom-out.png");
-const darkZoomOutPNG = require("../assets/icons/dark-zoom-out.png");
-const lightUndoPNG = require("../assets/icons/light-undo.png");
-const darkUndoPNG = require("../assets/icons/dark-undo.png");
-const darkStarPNG = require("../assets/icons/dark-star.png");
-const lightStarPNG = require("../assets/icons/light-star.png");
-const yellowStarPNG = require("../assets/icons/yellow-star.png");
+const lightZoomInPNG = require("../assets/icons/light-zoom-in-min.png");
+const darkZoomInPNG = require("../assets/icons/dark-zoom-in-min.png");
+const lightZoomOutPNG = require("../assets/icons/light-zoom-out-min.png");
+const darkZoomOutPNG = require("../assets/icons/dark-zoom-out-min.png");
+const lightUndoPNG = require("../assets/icons/light-undo-min.png");
+const darkUndoPNG = require("../assets/icons/dark-undo-min.png");
+const darkStarPNG = require("../assets/icons/dark-star-min.png");
+const lightStarPNG = require("../assets/icons/light-star-min.png");
+const yellowStarPNG = require("../assets/icons/yellow-star-min.png");
 const textSizeKey = "textSizeKey";
 
 const SongDisplayScreen = ({ route, navigation }) => {
@@ -69,11 +69,8 @@ const SongDisplayScreen = ({ route, navigation }) => {
           }),
         ],
       });
-      // setFavoriteSongs({list: []})
-    else {
-      console.log(song);
-      setFavoriteSongs({ list: [...favoriteSongs.list, song] });
-    }
+    // setFavoriteSongs({list: []})
+    else setFavoriteSongs({ list: [...favoriteSongs.list, song] });
   };
 
   const styles = StyleSheet.create({
