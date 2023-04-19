@@ -31,7 +31,7 @@
   },
   {
     "id": 6,
-    "title": "CC 6 Doamne bunătatea Ta ",
+    "title": "CC 6 El ne-a iubit venind in lume",
     "content": "\n1. El ne-a iubit venind în lume,\nCa noi pierduţi, să fim salvaţi.\nPrin sângele vărsat pe cruce,\nLa Golgota, Isus Hristos\nNe-a mântuit.\n\nRefren:  Ştiind că-I viu,\nPot învinge teama!\nŞi eu sunt viu,\nCăci m-a salvat.\nIar când ispita grea\n\nMă va ajunge,\nPrin Harul Său\nMă simt mereu\nEliberat.\n\n2. Ca un copil ce se încrede\nÎn tatăl său pe acest pământ,\nAşa mă încred\nȘi eu în Domnul,\nCăci de păcate mari\nEl m-a eliberat.\n\n3. Când voi pleca în veşnicie,\nCând lupta grea se va sfârşi,\nÎl voi vedea pe tron de slavă.\nEl boldul morţii l-a învins,\nPrin jertfa Sa.\n",
     "book_id": "CC"
   },
@@ -22531,7 +22531,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Lacrimi nu-s",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -22544,7 +22544,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Amagire",
-    "id": null,
+    "id": "cor",
     "author": "Chris Muraru",
     "composer": "Chris Muraru",
     "original_title": null,
@@ -22557,7 +22557,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Stau din nou gândindu-mă la jertfa Ta",
-    "id": null,
+    "id": "cor",
     "author": "Matt Redman",
     "composer": "MATT REDMAN ",
     "original_title": "Once again",
@@ -22570,7 +22570,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Psalmul 148",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -22583,7 +22583,7 @@
   {
     "book_id": "Cor",
     "title": "Cor De nepatruns si tainic",
-    "id": null,
+    "id": "cor",
     "author": "Carl Nielsen, adapt. Emanuel Balaceanu",
     "composer": "Carl Nielsen",
     "original_title": "Forunderligt at sige",
@@ -22596,7 +22596,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Doamne spre munti",
-    "id": null,
+    "id": "cor",
     "author": "Richard Smallwood, Psalmul 121:1,2",
     "composer": "Richard Smallwood",
     "original_title": "Total Praise",
@@ -22609,7 +22609,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Astazi vin sa-mi plec genunchii",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -22622,7 +22622,7 @@
   {
     "book_id": "Cor",
     "title": "Cor In limbi ceresti",
-    "id": null,
+    "id": "cor",
     "author": "1 Cor. 13 adapt. Text: Carmen Gavril",
     "composer": "Melodie populara americana",
     "original_title": "The Gift of Love",
@@ -22635,7 +22635,7 @@
   {
     "book_id": "Cor",
     "title": "Cor O, Betleem, oras micut",
-    "id": null,
+    "id": "cor",
     "author": "Phillips Brooks",
     "composer": "Lewis H. Redner",
     "original_title": "O Little Town of Bethlehem",
@@ -22648,7 +22648,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Umil în ieslea rece",
-    "id": null,
+    "id": "cor",
     "author": "I. Muresan",
     "composer": "anonim",
     "original_title": null,
@@ -22661,7 +22661,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Caci pentru mine a trai",
-    "id": null,
+    "id": "cor",
     "author": "John White",
     "composer": "John White",
     "original_title": "For me to live is Chris",
@@ -22674,7 +22674,7 @@
   {
     "book_id": "Cor",
     "title": "Cor El ne-a iubit venind in lume",
-    "id": null,
+    "id": "cor",
     "author": "William J & Gloria Gaither",
     "composer": "William J & Gloria Gaither",
     "original_title": "Because He lives I can face tomorrow",
@@ -22687,7 +22687,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Dar pana-atunci",
-    "id": null,
+    "id": "cor",
     "author": "Stuart Hamblen",
     "composer": "Stuart Hamblen",
     "original_title": "Until Then",
@@ -22700,7 +22700,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Mă cufund în oceanul de har",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -22713,7 +22713,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Comoara mea",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -22726,7 +22726,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Hristos in Cana Galileii",
-    "id": null,
+    "id": "cor",
     "author": "I. Prohanov",
     "composer": "M. Towner",
     "original_title": null,
@@ -22739,7 +22739,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Voia Ta",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -22752,7 +22752,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Voiosi chemam",
-    "id": null,
+    "id": "cor",
     "author": "Leona von Brethorst",
     "composer": "Leona von Brethorst",
     "original_title": "He Has Made Me Glad (I Will Enter His Gates)",
@@ -22765,7 +22765,7 @@
   {
     "book_id": "Cor",
     "title": "Cor O Tata bun si sfant!",
-    "id": null,
+    "id": "cor",
     "author": "Text latin de Thomas Aquinas",
     "composer": "Cesar Franck",
     "original_title": "Panis Angelicus",
@@ -22778,7 +22778,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Tatăl nostru",
-    "id": null,
+    "id": "cor",
     "author": "Titus C. Adorian",
     "composer": "Titus C. Adorian",
     "original_title": null,
@@ -22791,7 +22791,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Dar din glorii",
-    "id": null,
+    "id": "cor",
     "author": "Alina Bălăceanu, Emanuel Bălăceanu",
     "composer": "Alina si Emanuel Balaceanu",
     "original_title": null,
@@ -22804,7 +22804,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Privind la munti privind in jur",
-    "id": null,
+    "id": "cor",
     "author": "Martin Smith",
     "composer": "Martin Smith",
     "original_title": "I could sing of Your love",
@@ -22817,7 +22817,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Break my plans",
-    "id": null,
+    "id": "cor",
     "author": "This Hope",
     "composer": "This Hope",
     "original_title": null,
@@ -22830,7 +22830,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Cu Tine nu sunt singur",
-    "id": null,
+    "id": "cor",
     "author": "Andrae Crouch",
     "composer": "Andrae Crouch",
     "original_title": "My Tribute",
@@ -22843,7 +22843,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Du-ma la Golgota",
-    "id": null,
+    "id": "cor",
     "author": "Jennie Evelyn Hussey",
     "composer": "Jennie Evelyn Hussey",
     "original_title": "Lead me to calvary / King of my life I crown thee now",
@@ -22856,7 +22856,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Ce dar măreț e Isus Salvatorul",
-    "id": null,
+    "id": "cor",
     "author": "Michael Farren, Rich Thompson and Jonny Robinson",
     "composer": "Michael Farren, Rich Thompson and Jonny Robinson",
     "original_title": "Yet Not I But Through Christ in Me",
@@ -22869,7 +22869,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Daca-ti spune cineva",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -22882,7 +22882,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Toată puterea",
-    "id": null,
+    "id": "cor",
     "author": "James McGranaham (1886)",
     "composer": "James McGranaham (1886)",
     "original_title": "Far, far away, in heathen darkness dwelling / Go Ye into All the World",
@@ -22895,7 +22895,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Emanuel",
-    "id": null,
+    "id": "cor",
     "author": "Michael Card & Tom Fettke, trad. Daniel Stauceanu",
     "composer": "Michael Card & Tom Fettke",
     "original_title": "Immanuel",
@@ -22908,7 +22908,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Sa stralucesti",
-    "id": null,
+    "id": "cor",
     "author": "Graham Kendrick (1987)",
     "composer": "Graham Kendrick (1987)",
     "original_title": "Shine, Jesus, shine",
@@ -22921,7 +22921,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Tata noi vrem ca slava Ta",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -22934,7 +22934,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Total Praise",
-    "id": null,
+    "id": "cor",
     "author": "Richard Smallwood, Psalmul 121:1,2",
     "composer": "Richard Smallwood",
     "original_title": null,
@@ -22947,7 +22947,7 @@
   {
     "book_id": "Cor",
     "title": "Cor O inima curata Doamne",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -22960,7 +22960,7 @@
   {
     "book_id": "Cor",
     "title": "Cor O, crește-mi iubirea",
-    "id": null,
+    "id": "cor",
     "author": "Traian Dorz",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -22973,7 +22973,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Mama mea",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": "George Bennard 1913",
     "original_title": "The old rugged cross",
@@ -22986,7 +22986,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Nu mai fi trist",
-    "id": null,
+    "id": "cor",
     "author": "Ira Stanphill",
     "composer": "Ira Stanphill",
     "original_title": null,
@@ -22999,7 +22999,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Domn peste pamant",
-    "id": null,
+    "id": "cor",
     "author": "Michael W. Smith & Debbie Smith",
     "composer": "Michael W. Smith & Debbie Smith",
     "original_title": null,
@@ -23012,7 +23012,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Vrednic esti de cinste",
-    "id": null,
+    "id": "cor",
     "author": "Eva Hellmark",
     "composer": "Eva Hellmark",
     "original_title": "Lord we give you glory / You deserve the glory",
@@ -23025,7 +23025,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Salvat ce frumoasa cantare",
-    "id": null,
+    "id": "cor",
     "author": "Fanny J. Crosby, adapt. Iulian Teodorescu",
     "composer": "Aubrey L. Butler",
     "original_title": "Redeemed",
@@ -23038,7 +23038,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Dor de cer",
-    "id": null,
+    "id": "cor",
     "author": "Chris Rice, trad. Maia Balas si Cristina Ciora",
     "composer": "Chris Rice",
     "original_title": null,
@@ -23051,7 +23051,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Cant Aleluia!",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23064,7 +23064,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Condu pasii mei",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23077,7 +23077,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Tie-Ti cant Dumnezeul meu",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23090,7 +23090,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Cum sa-Ti multumesc",
-    "id": null,
+    "id": "cor",
     "author": "Isaac Walts",
     "composer": "George Frederick Handel",
     "original_title": "Joy to the world",
@@ -23103,7 +23103,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Nu va fi o veste mai frumoasa",
-    "id": null,
+    "id": "cor",
     "author": "John Peterson",
     "composer": "John Peterson",
     "original_title": "There will never be a sweeter story",
@@ -23116,7 +23116,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Esti viu",
-    "id": null,
+    "id": "cor",
     "author": "Edward Carswell, trad. Emanuel Balaceanu",
     "composer": "Edward Carswell",
     "original_title": null,
@@ -23129,7 +23129,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Inger alb din cerul sfant",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23142,7 +23142,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Aleluia Aleluia",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23155,7 +23155,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Eu știu că am în cer o casă",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23168,7 +23168,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Si azi pe strazi de iarna",
-    "id": null,
+    "id": "cor",
     "author": "Melodie britanica adap. Lb. romana Genovieva Sfatcu Beattie",
     "composer": "Melodie britanica",
     "original_title": null,
@@ -23181,7 +23181,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Acolo unde Duhul Sfant",
-    "id": null,
+    "id": "cor",
     "author": "G. Adam",
     "composer": "J. Sweney",
     "original_title": null,
@@ -23194,7 +23194,7 @@
   {
     "book_id": "Cor",
     "title": "Cor În orice colț de noapte",
-    "id": null,
+    "id": "cor",
     "author": "Angela Tamaș",
     "composer": "Raluca Vieriu",
     "original_title": null,
@@ -23207,7 +23207,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Lumina lumii prezenta divina",
-    "id": null,
+    "id": "cor",
     "author": "Tim Hughes",
     "composer": "Tim Hughes",
     "original_title": "Here I Am to Worship",
@@ -23220,7 +23220,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Voi slavi pe Mielul gloriei",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23233,7 +23233,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Orasul sfant",
-    "id": null,
+    "id": "cor",
     "author": "Stephen Adams 1844-1913",
     "composer": "Stephen Adams 1844-1913",
     "original_title": "The Holy City",
@@ -23246,7 +23246,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Mai mult ca orice comori",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23259,7 +23259,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Laudă Ţie-nceputul a toate",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23272,7 +23272,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Voi veni cu bucurie",
-    "id": null,
+    "id": "cor",
     "author": "Iovan Miclea",
     "composer": "Iovan Miclea",
     "original_title": null,
@@ -23285,7 +23285,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Via Dolorosa",
-    "id": null,
+    "id": "cor",
     "author": "Billy Sprague, Niles Borop",
     "composer": "Billy Sprague, Niles Borop",
     "original_title": "Via Dolorosa",
@@ -23298,7 +23298,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Unde-i teamă nu-i iubire",
-    "id": null,
+    "id": "cor",
     "author": "Costache Ioanid",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23311,7 +23311,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Nedespărțitul meu prieten",
-    "id": null,
+    "id": "cor",
     "author": "Traian Dorz",
     "composer": "Sara Bivolaru",
     "original_title": null,
@@ -23324,7 +23324,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Esti necuprins si sfant",
-    "id": null,
+    "id": "cor",
     "author": "Thomas Chisholm (1866–1960)",
     "composer": "William M. Runyan (1870–1957)",
     "original_title": "Great Is Thy Faithfulness",
@@ -23337,7 +23337,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Isus m-ai cuprins din necuprins",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": "Tom Coomes",
     "original_title": null,
@@ -23350,7 +23350,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Harul divin din ceruri",
-    "id": null,
+    "id": "cor",
     "author": "Haldor Lillenas (1918)",
     "composer": "Haldor Lillenas (1918)",
     "original_title": "Wonderful Grace of Jesus",
@@ -23363,7 +23363,7 @@
   {
     "book_id": "Cor",
     "title": "Cor O tu popor",
-    "id": null,
+    "id": "cor",
     "author": "Mary A. Thomson 1868",
     "composer": "James Walch 1875",
     "original_title": "O, Zion, Haste",
@@ -23376,7 +23376,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Ce nume minunat",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23389,7 +23389,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Colindul ingerilor",
-    "id": null,
+    "id": "cor",
     "author": "John Rutter, adapt. Carmen Gavril",
     "composer": "John Rutter",
     "original_title": "Angel's Carol",
@@ -23402,7 +23402,7 @@
   {
     "book_id": "Cor",
     "title": "Cor O noapte preasfintita",
-    "id": null,
+    "id": "cor",
     "author": "Franz Xaver Gruber",
     "composer": "Franz Xaver Gruber",
     "original_title": "Stille Nacht, heilige Nacht",
@@ -23415,7 +23415,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Tu eşti scăparea mea",
-    "id": null,
+    "id": "cor",
     "author": "Michael Ledner",
     "composer": "Michael Ledner",
     "original_title": "You are my hiding place",
@@ -23428,7 +23428,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Venim în a Ta prezenţă",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23441,7 +23441,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Departe-ntr-un staul",
-    "id": null,
+    "id": "cor",
     "author": "Anonim, adapt. Benone Burtescu",
     "composer": "William Kirkpatrick 1895",
     "original_title": "away in a manger",
@@ -23454,7 +23454,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Fata Ta",
-    "id": null,
+    "id": "cor",
     "author": "Eileen Berry, adapt. Măriuca Mihalache",
     "composer": "Dan Forrest",
     "original_title": "To Behold Thee",
@@ -23467,7 +23467,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Pe bolta cerului senin",
-    "id": null,
+    "id": "cor",
     "author": "Edmund H. Sears (1810-1876) trad. Valentin Popovici",
     "composer": "Richard S. Williams (1819-1900)",
     "original_title": "It Came Upon the Midnight Clear",
@@ -23480,7 +23480,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Celui ce-i vesnic",
-    "id": null,
+    "id": "cor",
     "author": "Kurt Kaiser.",
     "composer": "Kurt Kaiser.",
     "original_title": "Oh, how He loves you and me!",
@@ -23493,7 +23493,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Inspre cer se inalta cantarea mea",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": "Giuseppe Verdi",
     "original_title": "Nabbucco",
@@ -23506,7 +23506,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Doamne astazi vin",
-    "id": null,
+    "id": "cor",
     "author": "Geoff Bullock",
     "composer": "Geoff Bullock",
     "original_title": "The power of Your love",
@@ -23519,7 +23519,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Te prind fiori",
-    "id": null,
+    "id": "cor",
     "author": "Costache Ioanid",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23532,7 +23532,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Din El prin El si pentru El",
-    "id": null,
+    "id": "cor",
     "author": "Alecu Iacob",
     "composer": "Alecu Iacob",
     "original_title": null,
@@ -23545,7 +23545,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Mergi si vesteste",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23558,7 +23558,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Domnul va lucra",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23571,7 +23571,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Nu pot sa inteleg a Ta iubire",
-    "id": null,
+    "id": "cor",
     "author": "William Young Fullerton, adapt. Anonim",
     "composer": "Anonim. Londonderry Air",
     "original_title": "I cannot tell why he whom angels worship",
@@ -23584,7 +23584,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Priviti in Ghetsimani",
-    "id": null,
+    "id": "cor",
     "author": "I. Milutanul",
     "composer": "I. Milutanul",
     "original_title": null,
@@ -23597,7 +23597,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Isuse, niciodată",
-    "id": null,
+    "id": "cor",
     "author": "Traian Dorz",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,
@@ -23610,7 +23610,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Maret Domn",
-    "id": null,
+    "id": "cor",
     "author": "Wayne Watsom, trad. Lorelai",
     "composer": "Wayne Watsom",
     "original_title": "Almighty",
@@ -23623,7 +23623,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Iată cum veni la noi Domnul Isus",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23636,7 +23636,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Spala-ma in raul dragostei",
-    "id": null,
+    "id": "cor",
     "author": "Anonim",
     "composer": "anonim",
     "original_title": null,
@@ -23649,7 +23649,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Tata Te iubesc",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23662,7 +23662,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Ce mult Isus ne-a iubit",
-    "id": null,
+    "id": "cor",
     "author": "Audrey Mieir",
     "composer": "Audrey Mieir",
     "original_title": "His Name Is Wonderful",
@@ -23675,7 +23675,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Isus Miel preasfant",
-    "id": null,
+    "id": "cor",
     "author": "Dennis Jernigan",
     "composer": "Dennis Jernigan",
     "original_title": "You are myb all in all",
@@ -23688,7 +23688,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Lang-al crucii lemn",
-    "id": null,
+    "id": "cor",
     "author": "Ray Boltz & Lawrence Chewning, trad. Emanuel Balaceanu",
     "composer": "Ray Boltz & Lawrence Chewning",
     "original_title": "Keep Me Near the Cross",
@@ -23701,7 +23701,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Azi e ziua Lui!",
-    "id": null,
+    "id": "cor",
     "author": "Alina Bălăceanu, Emanuel Bălăceanu",
     "composer": "Alina si Emanuel Balaceanu",
     "original_title": null,
@@ -23714,7 +23714,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Ninge lin",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23727,7 +23727,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Crucea-i ascultarea",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Michael Farren, Rich Thompson and Jonny Robinson",
     "original_title": null,
@@ -23740,7 +23740,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Tu esti izvorul vietii mele",
-    "id": null,
+    "id": "cor",
     "author": "Carmen Gavril",
     "composer": "Walter Harrah",
     "original_title": "We sing Alleluia",
@@ -23753,7 +23753,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Cu bucurie sa cantati",
-    "id": null,
+    "id": "cor",
     "author": "Benoni Catana",
     "composer": "Benoni Catana",
     "original_title": null,
@@ -23766,7 +23766,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Cantarea Mantuirii Medley",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23779,7 +23779,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Toti sa fie una",
-    "id": null,
+    "id": "cor",
     "author": "Emanuel Bălăceanu",
     "composer": "Emanuel Balaceanu",
     "original_title": null,
@@ -23792,7 +23792,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Harul ce curge din Golgota",
-    "id": null,
+    "id": "cor",
     "author": "Julia H. Johnston 1911",
     "composer": "Daniel B. Towner",
     "original_title": "Grace Greater Than Our Sin",
@@ -23805,7 +23805,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Binecuvântează Doamne România",
-    "id": null,
+    "id": "cor",
     "author": null,
     "composer": null,
     "original_title": null,
@@ -23818,7 +23818,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Mărire Ție, Isuse",
-    "id": null,
+    "id": "cor",
     "author": "Charles Wesley",
     "composer": null,
     "original_title": null,
@@ -23831,7 +23831,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Imi veti fi martori",
-    "id": null,
+    "id": "cor",
     "author": "Jerry Kirk, F. Ap. 1:8",
     "composer": "Jerry Kirk",
     "original_title": "Ye Shall be Witnesses",
@@ -23844,7 +23844,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Mai bine-i cu Domnul",
-    "id": null,
+    "id": "cor",
     "author": "Rhea F. Miller",
     "composer": "George Beverly Shea",
     "original_title": "I'd rather have Jesus",
@@ -23857,7 +23857,7 @@
   {
     "book_id": "Cor",
     "title": "Cor Cum pâinea se dăruie",
-    "id": null,
+    "id": "cor",
     "author": "Nicolae Moldoveanu",
     "composer": "Nicolae Moldoveanu",
     "original_title": null,

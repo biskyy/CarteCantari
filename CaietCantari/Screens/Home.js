@@ -37,7 +37,7 @@ const CustomDrawerContent = (props) => {
   );
 };
 
-const MainScreen = ({ navigation }) => {
+const MainScreen = ({ navigation, bookType }) => {
   const [theme] = useAtom(themeAtom);
   const bgColor = theme == "dark" ? "black" : "white";
   const insets = useSafeAreaInsets();
@@ -53,7 +53,7 @@ const MainScreen = ({ navigation }) => {
       ]}
     >
       <View style={styles.listaCantari}>
-        <SongList navigation={navigation} />
+        <SongList navigation={navigation} book_id={bookType} />
       </View>
     </View>
   );
@@ -75,14 +75,65 @@ const Home = () => {
       drawerContent={CustomDrawerContent}
     >
       <Drawer.Screen
-        name="Caiet de cantari"
-        component={MainScreen}
+        name="Toate cantarile"
         options={{
           header: ({ navigation }) => (
             <NavBar mainScreen={true} navigation={navigation} />
           ),
         }}
-      />
+      >
+        {(props) => <MainScreen {...props} bookType="" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Caiet de cantari Chitila"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="CC" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Carte de cantari BER"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="BER" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Jubilate"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="J" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Carte de tineret"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="CT" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Cor"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="Cor" />}
+      </Drawer.Screen>
       <Drawer.Screen
         name="Cantari favorite"
         component={FavoritesList}

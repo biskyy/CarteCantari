@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import Cantari from "../Cantari.json"
 import { useAtom } from "jotai";
 import { favoritesList } from "../Components/State";
 import { StyleSheet, View } from "react-native";

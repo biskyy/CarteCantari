@@ -1,5 +1,4 @@
 import Cantari from "../Cantari.json";
-import CantariBER from "../CantariBER.json";
 import React, { memo, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 import { useAtom } from "jotai";
@@ -9,7 +8,12 @@ import CustomList from "./CustomList";
 
 const SongList = memo((props) => {
   const [theme] = useAtom(themeAtom);
-  const Cantari2 = Cantari.concat(CantariBER);
+  const data =
+    props.book_id == ""
+      ? Cantari
+      : Cantari.filter((song, index) => {
+          return song.book_id === props.book_id;
+        });
 
   const bgColor = theme == "dark" ? "black" : "white";
 
@@ -26,8 +30,8 @@ const SongList = memo((props) => {
 
   return (
     <View style={styles.container}>
-      <CustomList data={Cantari2} navigation={props.navigation} />
-      <SearchBar navigation={props.navigation} list={Cantari2} atom={false} />
+      <CustomList data={data} navigation={props.navigation} />
+      <SearchBar navigation={props.navigation} list={data} atom={false} />
     </View>
   );
 });

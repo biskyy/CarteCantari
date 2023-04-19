@@ -43,18 +43,35 @@ const CustomList = (props) => {
   const list = new DataProvider((r1, r2) => r1 !== r2).cloneWithRows(
     props.data
   );
-  const emptyList = new DataProvider((r1, r2) => r1 !== r2).cloneWithRows([{title: "", id: 9999}])
+  const emptyList = new DataProvider((r1, r2) => r1 !== r2).cloneWithRows([
+    { title: "", id: 9999, book_id: "EMPTY" },
+  ]);
   const layoutProvider = new LayoutProvider(
     (index) => {
-      return list.getSize() !== 0 ?  list.getDataForIndex(index).id : emptyList.getDataForIndex(index).id;
+      return list.getSize() !== 0
+        ? list.getDataForIndex(index).book_id
+        : emptyList.getDataForIndex(index).book_id;
     },
-    (smth, dim) => {
+    (type, dim) => {
+      switch (type) {
+        case "Cor":
+          dim.height = songItemHeight;
+          dim.width = screenWidth;
+          break;
+        case "EMPTY":
+          dim.height = 0;
+          dim.width = 0;
+          break;
+        default:
+          dim.height = songItemHeight;
+          dim.width = screenWidth;
+          break;
+      }
       dim.height = songItemHeight;
       dim.width = screenWidth;
     }
   );
   const rowRenderer = (index, data) => {
-
     return (
       <CustomButton
         style={styles.songButton}

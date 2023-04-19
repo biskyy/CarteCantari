@@ -13,7 +13,7 @@ const CustomButton = (props) => {
         style={props.style}
         disabled={props.disabled}
       >
-        <Text style={[props.textStyle]}>{props.text}</Text>
+        <Text numberOfLines={1} style={[props.textStyle]}>{props.text}</Text>
       </TouchableOpacity>
     </>
   );
