@@ -18,7 +18,7 @@ import { useAtom } from "jotai";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const [theme, setTheme] = useAtom(themeAtom);
+  const [, setTheme] = useAtom(themeAtom);
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {

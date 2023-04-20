@@ -9,6 +9,8 @@ import CustomButton from "./CustomButton";
 import { useAtom } from "jotai";
 import { themeAtom } from "./State";
 
+import { activateKeepAwakeAsync } from "expo-keep-awake";
+
 const songItemHeight = 40;
 const screenWidth = Dimensions.get("window").width;
 
@@ -78,6 +80,7 @@ const CustomList = (props) => {
         textStyle={styles.songButtonText}
         onPress={() => {
           props.navigation.navigate("SongDisplay", { song: data });
+          activateKeepAwakeAsync();
         }}
         text={data.title}
         disabled={data.id == 9999 ? true : false}

@@ -12,6 +12,7 @@ import Separator from "../Components/Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
 import { favoritesList, themeAtom } from "../Components/State";
+import { deactivateKeepAwake } from "expo-keep-awake";
 
 const lightZoomInPNG = require("../assets/icons/light-zoom-in-min.png");
 const darkZoomInPNG = require("../assets/icons/dark-zoom-in-min.png");
@@ -185,7 +186,10 @@ const SongDisplayScreen = ({ route, navigation }) => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => {
+              navigation.goBack();
+              deactivateKeepAwake();
+            }}
             style={styles.songContentButton}
           >
             <Image style={styles.image} source={undoPNG} />
