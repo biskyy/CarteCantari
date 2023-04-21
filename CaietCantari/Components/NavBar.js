@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Keyboard,
 } from "react-native";
+import { useRoute } from "@react-navigation/native";
 import Separator from "./Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -22,6 +23,7 @@ const lightHamburgerIcon = require("../assets/icons/light-hamburger-menu-min.png
 const NavBar = (props) => {
   const [theme, setTheme] = useAtom(themeAtom);
   const insets = useSafeAreaInsets();
+  const route = useRoute();
 
   const handleDarkModeButton = async () => {
     try {
@@ -48,6 +50,7 @@ const NavBar = (props) => {
   const hamburgerIcon =
     theme == "dark" ? lightHamburgerIcon : darkHamburgerIcon;
   const statusBarTheme = theme == "dark" ? "light-content" : "dark-content";
+  const backgroundColorTheme = theme == "dark" ? "black" : "white";
 
   const styles = StyleSheet.create({
     mainDiv: {
@@ -72,7 +75,7 @@ const NavBar = (props) => {
 
   return (
     <>
-      <StatusBar barStyle={statusBarTheme} />
+      <StatusBar barStyle={statusBarTheme} backgroundColor={backgroundColorTheme} />
       <View style={[styles.mainDiv, { paddingTop: insets.top }]}>
         {props.mainScreen && (
           <TouchableOpacity
@@ -82,27 +85,7 @@ const NavBar = (props) => {
             <Image style={styles.image} source={hamburgerIcon} />
           </TouchableOpacity>
         )}
-        <Text style={[styles.text]}>Caiet de Cantari</Text>
-        {/* <TouchableOpacity
-          onPress={async () => {
-            await AsyncStorage.clear();
-            console.log("cleared");
-          }}
-        >
-          <Text style={{ color: txtColor }}>Clear</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={async () => {
-            console.log("-------------------------");
-            console.log("astorage: ");
-            console.log(await AsyncStorage.getItem(themeButtonKey));
-            console.log("atom: ");
-            console.log(theme);
-            console.log("-------------------------");
-          }}
-        >
-          <Text style={{ color: txtColor }}>Get curr</Text>
-        </TouchableOpacity> */}
+        <Text style={[styles.text]}>{route.name == "SongDisplay" ? "Caiet de cantari" : route.name}</Text>
         <TouchableOpacity
           onPress={handleDarkModeButton}
           style={[styles.darkModeButton, styles.image, { marginRight: 10 }]}
@@ -114,28 +97,5 @@ const NavBar = (props) => {
     </>
   );
 };
-
-// const styles = StyleSheet.create({
-//   mainDiv: {
-//     // backgroundColor: "black", // raisin black: #1A181B
-//     color: "white",
-//     width: "100%",
-//     flexDirection: "row",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   text: {
-//     // color: "white",
-//     fontSize: 25,
-//     margin: 10,
-//     marginLeft: 15,
-//     fontWeight: "bold",
-//     flexGrow: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   image: { maxHeight: 35, maxWidth: 35 },
-//   darkModeButton: { flexGrow: 1, marginRight: 15 },
-// });
 
 export default memo(NavBar);
