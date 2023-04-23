@@ -91,6 +91,9 @@ const CustomList = (props) => {
   return (
     <RecyclerListView
       keyboardShouldPersistTaps="handled"
+      applyWindowCorrection={
+        (xOffset, yOffset, windowCorrection) => {windowCorrection.endCorrection = 100}
+      }
       style={styles.flatList}
       rowRenderer={rowRenderer}
       dataProvider={list.getSize() !== 0 ? list : emptyList}
