@@ -1,10 +1,9 @@
-import React, { memo } from "react";
+import React from "react";
 import {
   Text,
   StyleSheet,
   View,
   StatusBar,
-  Image,
   TouchableOpacity,
   Keyboard,
 } from "react-native";
@@ -16,11 +15,6 @@ import { imageSize, themeAtom, themeButtonKey } from "./State";
 import { useAtom } from "jotai";
 import { longPressHandler } from "../Screens/Game/LongPressHandler";
 import { Ionicons } from "@expo/vector-icons";
-
-const lightModeIcon = require("../assets/icons/light-mode-icon-min.png");
-const darkModeIcon = require("../assets/icons/dark-mode-icon-min.png");
-const darkHamburgerIcon = require("../assets/icons/dark-hamburger-menu-min.png");
-const lightHamburgerIcon = require("../assets/icons/light-hamburger-menu-min.png");
 
 const NavBar = (props) => {
   const [theme, setTheme] = useAtom(themeAtom);
@@ -48,9 +42,6 @@ const NavBar = (props) => {
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
-  const themeIcon = theme == "dark" ? darkModeIcon : lightModeIcon;
-  const hamburgerIcon =
-    theme == "dark" ? lightHamburgerIcon : darkHamburgerIcon;
   const statusBarTheme = theme == "dark" ? "light-content" : "dark-content";
   const backgroundColorTheme = theme == "dark" ? "black" : "white";
 
@@ -107,4 +98,4 @@ const NavBar = (props) => {
   );
 };
 
-export default memo(NavBar);
+export default NavBar;
