@@ -14,8 +14,6 @@ android-app/
 eas.json
 CarteCantariCarol/
 CarteCantariCarol.zip
-Game/
-GameScreen.js
 # macOS
 .DS_Store
 
