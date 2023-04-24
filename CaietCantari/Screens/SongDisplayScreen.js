@@ -5,14 +5,14 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Separator from "../Components/Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
-import { favoritesListAtom, themeAtom } from "../Components/State";
+import { favoritesListAtom, imageSize, themeAtom } from "../Components/State";
 import { deactivateKeepAwake } from "expo-keep-awake";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const lightZoomInPNG = require("../assets/icons/light-zoom-in-min.png");
 const darkZoomInPNG = require("../assets/icons/dark-zoom-in-min.png");
@@ -32,10 +32,6 @@ const SongDisplayScreen = ({ route, navigation }) => {
   const [favoriteSongs, setFavoriteSongs] = useAtom(favoritesListAtom);
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
-  const zoomInPNG = theme == "light" ? darkZoomInPNG : lightZoomInPNG;
-  const zoomOutPNG = theme == "light" ? darkZoomOutPNG : lightZoomOutPNG;
-  const undoPNG = theme == "light" ? darkUndoPNG : lightUndoPNG;
-  const starPNG = theme == "dark" ? lightStarPNG : darkStarPNG;
 
   const [textSize, setTextSize] = useState(20);
 
@@ -70,7 +66,6 @@ const SongDisplayScreen = ({ route, navigation }) => {
           }),
         ],
       });
-    // setFavoriteSongs({list: []})
     else setFavoriteSongs({ list: [...favoriteSongs.list, song] });
   };
 
@@ -119,8 +114,8 @@ const SongDisplayScreen = ({ route, navigation }) => {
     },
     image: {
       backgroundColor: bgColor,
-      width: 50,
-      height: 50,
+      width: imageSize,
+      height: imageSize,
     },
   });
 
@@ -164,7 +159,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
             }}
             style={styles.songContentButton}
           >
-            <Image style={styles.image} source={zoomOutPNG} />
+            <MaterialIcons name="zoom-out" size={imageSize} color={txtColor} style={styles.image}/>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -172,18 +167,13 @@ const SongDisplayScreen = ({ route, navigation }) => {
             }}
             style={styles.songContentButton}
           >
-            <Image style={styles.image} source={zoomInPNG} />
+            <MaterialIcons name="zoom-in" size={imageSize} color={txtColor} style={styles.image}/>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={handleStarButton}
             style={styles.songContentButton}
           >
-            <Image
-              style={styles.image}
-              source={
-                favoriteSongs.list.includes(song) ? yellowStarPNG : starPNG
-              }
-            />
+            {favoriteSongs.list.includes(song) ? <MaterialIcons name="star" color="gold" style={styles.image} size={imageSize}/> : <MaterialIcons name="star-border" size={imageSize} color={txtColor} style={styles.image}/>}
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -192,7 +182,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
             }}
             style={styles.songContentButton}
           >
-            <Image style={styles.image} source={undoPNG} />
+            <MaterialIcons name="keyboard-backspace" size={imageSize} color={txtColor} style={styles.image}/>
           </TouchableOpacity>
         </View>
       </View>

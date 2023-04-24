@@ -7,9 +7,10 @@ import {
   Image,
 } from "react-native";
 import { useAtom } from "jotai";
-import { themeAtom } from "./State";
+import { imageSize, themeAtom } from "./State";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomList from "./CustomList";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const darkClearPNG = require("../assets/icons/dark-clear-min.png");
 const lightClearPNG = require("../assets/icons/light-clear-min.png");
@@ -43,7 +44,7 @@ const SearchBar = (props) => {
           width: "99%",
           borderWidth: 1,
           borderColor: txtColor,
-          borderRadius: 10,
+          borderRadius: 8,
         },
         textInput: {
           flex: 1,
@@ -52,19 +53,21 @@ const SearchBar = (props) => {
           fontSize: 17,
           backgroundColor: bgColor,
           borderColor: bgColor,
-          borderRadius: 12,
+          borderRadius: 8,
         },
         touchable: {
+          flex: 1,
           maxHeight: "100%",
           width: 50,
           backgroundColor: bgColor,
-          borderRadius: 12,
+          borderRadius: 8,
+          alignItems: "center",
+          justifyContent: "center"
         },
         image: {
-          maxHeight: "100%",
-          maxWidth: 50,
+          maxHeight: imageSize,
+          maxWidth: imageSize,
           backgroundColor: bgColor,
-          borderRadius: 12,
         },
       }),
     [theme]
@@ -75,11 +78,11 @@ const SearchBar = (props) => {
 
   const onTextInputQueryChange = (query) => {
     setSearchQuery(query);
-    let editedQuery = query
+    editedQuery = query
       .toLowerCase()
       .normalize("NFKD")
       .replace(/[^\w\s.-_\/]/g, "")
-      .trim()
+      .trim();
     filteredData = songList.filter((song) => {
       return (
         song.id.toString().includes(editedQuery) ||
@@ -127,7 +130,7 @@ const SearchBar = (props) => {
               style={styles.touchable}
               onPress={() => setSearchQuery("")}
             >
-              <Image style={styles.image} source={clearPNG} />
+              <MaterialIcons name="clear" size={imageSize} color={txtColor} />
             </TouchableOpacity>
           )}
         </View>

@@ -3,6 +3,7 @@ import { atomWithStorage, createJSONStorage } from "jotai/utils";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const themeButtonKey = "theme";
+export const imageSize = 30;
 
 const storage = createJSONStorage(() => AsyncStorage);
 const favoriteListObject = { list: [] }; // anything JSON serializable

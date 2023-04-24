@@ -12,9 +12,10 @@ import { useRoute } from "@react-navigation/native";
 import Separator from "./Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { themeAtom, themeButtonKey } from "./State";
+import { imageSize, themeAtom, themeButtonKey } from "./State";
 import { useAtom } from "jotai";
 import { longPressHandler } from "../Screens/Game/LongPressHandler";
+import { Ionicons } from "@expo/vector-icons";
 
 const lightModeIcon = require("../assets/icons/light-mode-icon-min.png");
 const darkModeIcon = require("../assets/icons/dark-mode-icon-min.png");
@@ -86,7 +87,7 @@ const NavBar = (props) => {
             onPress={handleHamburgerMenu}
             style={[styles.darkModeButton, styles.image, { marginLeft: 10 }]}
           >
-            <Image style={styles.image} source={hamburgerIcon} />
+            <Ionicons name="menu-outline" size={imageSize} color={txtColor} />
           </TouchableOpacity>
         )}
         <Text style={[styles.text]}>
@@ -98,7 +99,7 @@ const NavBar = (props) => {
           onLongPress={() => longPressHandler(props.navigation, route.name)}
           style={[styles.darkModeButton, styles.image, { marginRight: 10 }]}
         >
-          <Image style={styles.image} source={themeIcon} />
+          <Ionicons name="contrast-sharp" size={imageSize} color={txtColor} />
         </TouchableOpacity>
       </View>
       <Separator backgroundColor={txtColor} />
