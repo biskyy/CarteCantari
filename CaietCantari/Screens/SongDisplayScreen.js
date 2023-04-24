@@ -11,7 +11,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Separator from "../Components/Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
-import { favoritesList, themeAtom } from "../Components/State";
+import { favoritesListAtom, themeAtom } from "../Components/State";
 import { deactivateKeepAwake } from "expo-keep-awake";
 
 const lightZoomInPNG = require("../assets/icons/light-zoom-in-min.png");
@@ -29,7 +29,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
   const { song } = route.params;
   const insets = useSafeAreaInsets();
   const [theme] = useAtom(themeAtom);
-  const [favoriteSongs, setFavoriteSongs] = useAtom(favoritesList);
+  const [favoriteSongs, setFavoriteSongs] = useAtom(favoritesListAtom);
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
   const zoomInPNG = theme == "light" ? darkZoomInPNG : lightZoomInPNG;
