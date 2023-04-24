@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./Screens/Home";
 import SongDisplayScreen from "./Screens/SongDisplayScreen";
+import GameScreen from "./Screens/GameScreen";
 import NavBar from "./Components/NavBar";
 
 import { Image, View } from "react-native";
@@ -48,6 +49,13 @@ const App = () => {
             <Stack.Screen
               name="SongDisplay"
               component={SongDisplayScreen}
+              options={{
+                header: ({ navigation }) => <NavBar navigation={navigation} />,
+              }}
+            />
+            <Stack.Screen
+              name="2048"
+              component={GameScreen}
               options={{ header: () => <NavBar /> }}
             />
           </Stack.Navigator>
