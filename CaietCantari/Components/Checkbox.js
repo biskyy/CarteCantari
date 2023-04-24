@@ -41,7 +41,7 @@ const CustomCheckbox = (props) => {
           marginHorizontal: 10,
           marginVertical: 5,
           borderRadius: 4,
-          backgroundColor: "red",
+          backgroundColor: bgColor,
         }}
       >
         <View

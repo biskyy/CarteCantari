@@ -11,7 +11,6 @@ import { themeAtom } from "./State";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomList from "./CustomList";
 
-const songItemHeight = 40;
 const darkClearPNG = require("../assets/icons/dark-clear-min.png");
 const lightClearPNG = require("../assets/icons/light-clear-min.png");
 
@@ -71,13 +70,17 @@ const SearchBar = (props) => {
     [theme]
   );
 
+  let editedQuery;
+  let filteredData;
+
   const onTextInputQueryChange = (query) => {
     setSearchQuery(query);
-    const editedQuery = query
+    let editedQuery = query
       .toLowerCase()
       .normalize("NFKD")
-      .replace(/[^\w\s.-_\/]/g, "");
-    const filteredData = songList.filter((song) => {
+      .replace(/[^\w\s.-_\/]/g, "")
+      .trim()
+    filteredData = songList.filter((song) => {
       return (
         song.id.toString().includes(editedQuery) ||
         song.content
