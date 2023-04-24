@@ -4,7 +4,6 @@ import {
   TextInput,
   View,
   StyleSheet,
-  Image,
 } from "react-native";
 import { useAtom } from "jotai";
 import { imageSize, themeAtom } from "./State";
@@ -12,15 +11,11 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomList from "./CustomList";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const darkClearPNG = require("../assets/icons/dark-clear-min.png");
-const lightClearPNG = require("../assets/icons/light-clear-min.png");
-
 const SearchBar = (props) => {
   const [theme] = useAtom(themeAtom);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
   const songList = props.atom ? props.list.list : props.list;
-  const clearPNG = theme == "dark" ? lightClearPNG : darkClearPNG;
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";

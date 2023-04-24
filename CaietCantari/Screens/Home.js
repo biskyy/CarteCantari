@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import SongList from "../Components/SongList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -176,4 +176,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default memo(Home);
+export default Home;

@@ -13,17 +13,7 @@ import { useAtom } from "jotai";
 import { favoritesListAtom, imageSize, themeAtom } from "../Components/State";
 import { deactivateKeepAwake } from "expo-keep-awake";
 import { MaterialIcons } from "@expo/vector-icons";
-
-const lightZoomInPNG = require("../assets/icons/light-zoom-in-min.png");
-const darkZoomInPNG = require("../assets/icons/dark-zoom-in-min.png");
-const lightZoomOutPNG = require("../assets/icons/light-zoom-out-min.png");
-const darkZoomOutPNG = require("../assets/icons/dark-zoom-out-min.png");
-const lightUndoPNG = require("../assets/icons/light-undo-min.png");
-const darkUndoPNG = require("../assets/icons/dark-undo-min.png");
-const darkStarPNG = require("../assets/icons/dark-star-min.png");
-const lightStarPNG = require("../assets/icons/light-star-min.png");
-const yellowStarPNG = require("../assets/icons/yellow-star-min.png");
-const textSizeKey = "textSizeKey";
+import { textSizeKey } from "../Components/State";
 
 const SongDisplayScreen = ({ route, navigation }) => {
   const { song } = route.params;
