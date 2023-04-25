@@ -4,12 +4,15 @@ import {
   TextInput,
   View,
   StyleSheet,
+  Image
 } from "react-native";
 import { useAtom } from "jotai";
 import { imageSize, themeAtom } from "./State";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomList from "./CustomList";
-import { MaterialIcons } from "@expo/vector-icons";
+
+const darkClearPNG = require("../assets/icons/dark-clear-min.png");
+const lightClearPNG = require("../assets/icons/light-clear-min.png");
 
 const SearchBar = (props) => {
   const [theme] = useAtom(themeAtom);
@@ -19,6 +22,8 @@ const SearchBar = (props) => {
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
+
+  const clearPNG = theme == "dark" ? lightClearPNG : darkClearPNG;
 
   const styles = useMemo(
     () =>
@@ -36,7 +41,7 @@ const SearchBar = (props) => {
           height: 50,
           flexDirection: "row",
           backgroundColor: bgColor,
-          width: "99%",
+          width: "98%",
           borderWidth: 1,
           borderColor: txtColor,
           borderRadius: 8,
@@ -54,15 +59,15 @@ const SearchBar = (props) => {
           flex: 1,
           maxHeight: "100%",
           width: 50,
-          backgroundColor: bgColor,
-          borderRadius: 8,
+          // backgroundColor: bgColor,
+          // borderRadius: 8,
           alignItems: "center",
           justifyContent: "center"
         },
         image: {
           maxHeight: imageSize,
           maxWidth: imageSize,
-          backgroundColor: bgColor,
+          // backgroundColor: bgColor,
         },
       }),
     [theme]
@@ -125,7 +130,7 @@ const SearchBar = (props) => {
               style={styles.touchable}
               onPress={() => setSearchQuery("")}
             >
-              <MaterialIcons name="clear" size={imageSize} color={txtColor} />
+              <Image style={styles.image} source={clearPNG} />
             </TouchableOpacity>
           )}
         </View>

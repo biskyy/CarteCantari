@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const themeButtonKey = "theme";
 export const textSizeKey = "textSizeKey";
-export const imageSize = 30;
+export const imageSize = 50;
 
 const storage = createJSONStorage(() => AsyncStorage);
 const favoriteListObject = { list: [] }; // anything JSON serializable
