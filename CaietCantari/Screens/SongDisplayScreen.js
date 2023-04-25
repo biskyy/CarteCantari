@@ -5,14 +5,13 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image
+  Image,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Separator from "../Components/Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
 import { favoritesListAtom, imageSize, themeAtom } from "../Components/State";
-import { deactivateKeepAwake } from "expo-keep-awake";
 import { textSizeKey } from "../Components/State";
 
 const lightZoomInPNG = require("../assets/icons/light-zoom-in-min.png");
@@ -186,10 +185,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-              deactivateKeepAwake();
-            }}
+            onPress={() => navigation.goBack()}
             style={styles.songContentButton}
           >
             <Image style={styles.image} source={undoPNG} />

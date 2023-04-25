@@ -8,7 +8,7 @@ export const imageSize = 50;
 
 const storage = createJSONStorage(() => AsyncStorage);
 const favoriteListObject = { list: [] }; // anything JSON serializable
-const onlyCCObject = { isOnlyCC: false };
+const onlyCCObject = { isOnlyCC: true };
 
 export const favoritesListAtom = atomWithStorage(
   "favorites",
