@@ -1,12 +1,12 @@
-import React, { memo } from "react";
+import React from "react";
 import {
   Text,
   StyleSheet,
   View,
   StatusBar,
-  Image,
   TouchableOpacity,
   Keyboard,
+  Image
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import Separator from "./Separator";
@@ -14,6 +14,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { themeAtom, themeButtonKey } from "./State";
 import { useAtom } from "jotai";
+import { longPressHandler } from "../Screens/Game/LongPressHandler";
 
 
 const lightModeIcon = require("../assets/icons/light-mode-icon-min.png");
@@ -25,6 +26,10 @@ const NavBar = (props) => {
   const [theme, setTheme] = useAtom(themeAtom);
   const insets = useSafeAreaInsets();
   const route = useRoute();
+
+  const themeIcon = theme == "dark" ? darkModeIcon : lightModeIcon;
+  const hamburgerIcon =
+    theme == "dark" ? lightHamburgerIcon : darkHamburgerIcon;
 
   const handleDarkModeButton = async () => {
     try {
@@ -47,9 +52,6 @@ const NavBar = (props) => {
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
-  const themeIcon = theme == "dark" ? darkModeIcon : lightModeIcon;
-  const hamburgerIcon =
-    theme == "dark" ? lightHamburgerIcon : darkHamburgerIcon;
   const statusBarTheme = theme == "dark" ? "light-content" : "dark-content";
   const backgroundColorTheme = theme == "dark" ? "black" : "white";
 
@@ -76,7 +78,10 @@ const NavBar = (props) => {
 
   return (
     <>
-      <StatusBar barStyle={statusBarTheme} backgroundColor={backgroundColorTheme} />
+      <StatusBar
+        barStyle={statusBarTheme}
+        backgroundColor={backgroundColorTheme}
+      />
       <View style={[styles.mainDiv, { paddingTop: insets.top }]}>
         {props.mainScreen && (
           <TouchableOpacity
@@ -86,9 +91,13 @@ const NavBar = (props) => {
             <Image style={styles.image} source={hamburgerIcon} />
           </TouchableOpacity>
         )}
-        <Text style={[styles.text]}>{route.name == "SongDisplay" ? "Caiet de cantari" : route.name}</Text>
+        <Text style={[styles.text]}>
+          {route.name == "SongDisplay" ? "Caiet de cantari" : route.name}
+        </Text>
         <TouchableOpacity
           onPress={handleDarkModeButton}
+          delayLongPress={2048}
+          onLongPress={() => longPressHandler(props.navigation, route.name)}
           style={[styles.darkModeButton, styles.image, { marginRight: 10 }]}
         >
           <Image style={styles.image} source={themeIcon} />
@@ -99,4 +108,4 @@ const NavBar = (props) => {
   );
 };
 
-export default memo(NavBar);
+export default NavBar;

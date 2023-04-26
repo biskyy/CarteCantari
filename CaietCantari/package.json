@@ -1,6 +1,6 @@
 {
   "name": "caietcantari",
-  "version": "1.0.0",
+  "version": "2.1.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -14,6 +14,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "expo": "~48.0.9",
+    "expo-updates": "~0.16.4",
     "jotai": "^2.0.4",
     "react": "18.2.0",
     "react-native": "0.71.6",
@@ -21,9 +22,8 @@
     "react-native-reanimated": "~2.14.4",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
-    "recyclerlistview": "^4.2.0",
-    "expo-updates": "~0.16.4",
-    "expo-keep-awake": "~12.0.1"
+    "react-native-swipe-gestures": "^1.0.5",
+    "recyclerlistview": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

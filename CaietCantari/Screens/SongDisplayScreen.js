@@ -11,8 +11,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Separator from "../Components/Separator";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
-import { favoritesList, themeAtom } from "../Components/State";
-import { deactivateKeepAwake } from "expo-keep-awake";
+import { favoritesListAtom, imageSize, themeAtom } from "../Components/State";
+import { textSizeKey } from "../Components/State";
 
 const lightZoomInPNG = require("../assets/icons/light-zoom-in-min.png");
 const darkZoomInPNG = require("../assets/icons/dark-zoom-in-min.png");
@@ -23,15 +23,15 @@ const darkUndoPNG = require("../assets/icons/dark-undo-min.png");
 const darkStarPNG = require("../assets/icons/dark-star-min.png");
 const lightStarPNG = require("../assets/icons/light-star-min.png");
 const yellowStarPNG = require("../assets/icons/yellow-star-min.png");
-const textSizeKey = "textSizeKey";
 
 const SongDisplayScreen = ({ route, navigation }) => {
   const { song } = route.params;
   const insets = useSafeAreaInsets();
   const [theme] = useAtom(themeAtom);
-  const [favoriteSongs, setFavoriteSongs] = useAtom(favoritesList);
+  const [favoriteSongs, setFavoriteSongs] = useAtom(favoritesListAtom);
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
+
   const zoomInPNG = theme == "light" ? darkZoomInPNG : lightZoomInPNG;
   const zoomOutPNG = theme == "light" ? darkZoomOutPNG : lightZoomOutPNG;
   const undoPNG = theme == "light" ? darkUndoPNG : lightUndoPNG;
@@ -70,7 +70,6 @@ const SongDisplayScreen = ({ route, navigation }) => {
           }),
         ],
       });
-    // setFavoriteSongs({list: []})
     else setFavoriteSongs({ list: [...favoriteSongs.list, song] });
   };
 
@@ -119,8 +118,8 @@ const SongDisplayScreen = ({ route, navigation }) => {
     },
     image: {
       backgroundColor: bgColor,
-      width: 50,
-      height: 50,
+      width: imageSize,
+      height: imageSize,
     },
   });
 
@@ -186,10 +185,7 @@ const SongDisplayScreen = ({ route, navigation }) => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-              deactivateKeepAwake();
-            }}
+            onPress={() => navigation.goBack()}
             style={styles.songContentButton}
           >
             <Image style={styles.image} source={undoPNG} />

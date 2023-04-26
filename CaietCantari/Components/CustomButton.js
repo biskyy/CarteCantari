@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 
 const CustomButton = (props) => {
@@ -19,4 +19,4 @@ const CustomButton = (props) => {
   );
 };
 
-export default memo(CustomButton);
+export default CustomButton;
