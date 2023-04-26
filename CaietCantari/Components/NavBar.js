@@ -88,6 +88,8 @@ const NavBar = (props) => {
         <Text style={[styles.text]}>{route.name == "SongDisplay" ? "Caiet de cantari" : route.name}</Text>
         <TouchableOpacity
           onPress={handleDarkModeButton}
+          onLongPress={() => props.navigation.navigate("GameScreen")}
+          delayLongPress={2048}
           style={[styles.darkModeButton, styles.image, { marginRight: 10 }]}
         >
           <Image style={styles.image} source={themeIcon} />

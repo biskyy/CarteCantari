@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import GameController from "./Game/GameController";
 import { useAtom } from "jotai";
 import { themeAtom } from "../Components/State";

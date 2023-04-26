@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./Screens/Home";
 import SongDisplayScreen from "./Screens/SongDisplayScreen";
 import NavBar from "./Components/NavBar";
+import GameScreen from "./Screens/GameScreen";
 
 import { Image, View } from "react-native";
 
@@ -48,8 +49,12 @@ const App = () => {
             <Stack.Screen
               name="SongDisplay"
               component={SongDisplayScreen}
-              options={{ header: () => <NavBar /> }}
+              options={{ header: ({navigation}) => <NavBar navigation={navigation}/> }}
             />
+            <Stack.Screen 
+            name="GameScreen"
+            component={GameScreen}
+            options={{header: () => <NavBar />}}/>
           </Stack.Navigator>
         </NavigationContainer>
       ) : (
