@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import Ionicons from "@expo"
 import { useAtom } from "jotai";
 import { themeAtom } from "./State";
 

@@ -73,17 +73,14 @@ const SearchBar = (props) => {
     [theme]
   );
 
-  let editedQuery;
-  let filteredData;
-
   const onTextInputQueryChange = (query) => {
     setSearchQuery(query);
-    editedQuery = query
+    const editedQuery = query
       .toLowerCase()
       .normalize("NFKD")
       .replace(/[^\w\s.-_\/]/g, "")
       .trim();
-    filteredData = songList.filter((song) => {
+    const filteredData = songList.filter((song) => {
       return (
         song.id.toString().includes(editedQuery) ||
         song.content
