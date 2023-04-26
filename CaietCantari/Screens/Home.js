@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import SongList from "../Components/SongList";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAtom } from "jotai";
-import { onlyCCCheckboxAtom, themeAtom } from "../Components/State";
+import { themeAtom } from "../Components/State";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import FavoritesList from "./FavoritesList";
 import {
@@ -12,15 +12,12 @@ import {
 } from "@react-navigation/drawer";
 import NavBar from "../Components/NavBar";
 import Separator from "../Components/Separator";
-import CustomCheckbox from "../Components/Checkbox";
 
 const Drawer = createDrawerNavigator();
 
 const CustomDrawerContent = (props) => {
   const [theme] = useAtom(themeAtom);
   const txtColor = theme == "light" ? "black" : "white";
-
-  const [isCCOnly, setIsCCOnly] = useAtom(onlyCCCheckboxAtom);
 
   return (
     <DrawerContentScrollView {...props}>
@@ -35,16 +32,7 @@ const CustomDrawerContent = (props) => {
         Meniu
       </Text>
       <Separator backgroundColor={txtColor} />
-      <View style={{ marginBottom: 5 }} />
       <DrawerItemList {...props} />
-      <CustomCheckbox
-        onPress={() => {
-          setIsCCOnly({ isOnlyCC: !isCCOnly.isOnlyCC });
-          console.log(isCCOnly.isOnlyCC);
-        }}
-        checked={!isCCOnly.isOnlyCC}
-        label="Numai caietul de cantari"
-      />
     </DrawerContentScrollView>
   );
 };
@@ -73,7 +61,6 @@ const MainScreen = ({ navigation, bookType }) => {
 
 const Home = () => {
   const [theme] = useAtom(themeAtom);
-  const [isCCOnly] = useAtom(onlyCCCheckboxAtom);
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "light" ? "black" : "white";
 
@@ -95,62 +82,58 @@ const Home = () => {
           ),
         }}
       >
-        {(props) => <MainScreen {...props} bookType={!isCCOnly.isOnlyCC ? "CC" : ""} />}
+        {(props) => <MainScreen {...props} bookType="" />}
       </Drawer.Screen>
-      {isCCOnly.isOnlyCC && (
-        <>
-          <Drawer.Screen
-            name="Caiet de cantari Chitila"
-            options={{
-              header: ({ navigation }) => (
-                <NavBar mainScreen={true} navigation={navigation} />
-              ),
-            }}
-          >
-            {(props) => <MainScreen {...props} bookType="CC" />}
-          </Drawer.Screen>
-          <Drawer.Screen
-            name="Carte de cantari BER"
-            options={{
-              header: ({ navigation }) => (
-                <NavBar mainScreen={true} navigation={navigation} />
-              ),
-            }}
-          >
-            {(props) => <MainScreen {...props} bookType="BER" />}
-          </Drawer.Screen>
-          <Drawer.Screen
-            name="Jubilate"
-            options={{
-              header: ({ navigation }) => (
-                <NavBar mainScreen={true} navigation={navigation} />
-              ),
-            }}
-          >
-            {(props) => <MainScreen {...props} bookType="J" />}
-          </Drawer.Screen>
-          <Drawer.Screen
-            name="Carte de tineret"
-            options={{
-              header: ({ navigation }) => (
-                <NavBar mainScreen={true} navigation={navigation} />
-              ),
-            }}
-          >
-            {(props) => <MainScreen {...props} bookType="CT" />}
-          </Drawer.Screen>
-          <Drawer.Screen
-            name="Cor"
-            options={{
-              header: ({ navigation }) => (
-                <NavBar mainScreen={true} navigation={navigation} />
-              ),
-            }}
-          >
-            {(props) => <MainScreen {...props} bookType="Cor" />}
-          </Drawer.Screen>
-        </>
-      )}
+      <Drawer.Screen
+        name="Caiet de cantari Chitila"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="CC" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Carte de cantari BER"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="BER" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Jubilate"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="J" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Carte de tineret"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="CT" />}
+      </Drawer.Screen>
+      <Drawer.Screen
+        name="Cor"
+        options={{
+          header: ({ navigation }) => (
+            <NavBar mainScreen={true} navigation={navigation} />
+          ),
+        }}
+      >
+        {(props) => <MainScreen {...props} bookType="Cor" />}
+      </Drawer.Screen>
       <Drawer.Screen
         name="Cantari favorite"
         component={FavoritesList}
@@ -176,4 +159,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default memo(Home);

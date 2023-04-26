@@ -4,13 +4,14 @@ import {
   TextInput,
   View,
   StyleSheet,
-  Image
+  Image,
 } from "react-native";
 import { useAtom } from "jotai";
-import { imageSize, themeAtom } from "./State";
+import { themeAtom } from "./State";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomList from "./CustomList";
 
+const songItemHeight = 40;
 const darkClearPNG = require("../assets/icons/dark-clear-min.png");
 const lightClearPNG = require("../assets/icons/light-clear-min.png");
 
@@ -19,11 +20,10 @@ const SearchBar = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredSongs, setFilteredSongs] = useState([]);
   const songList = props.atom ? props.list.list : props.list;
+  const clearPNG = theme == "dark" ? lightClearPNG : darkClearPNG;
 
   const bgColor = theme == "dark" ? "black" : "white";
   const txtColor = theme == "dark" ? "white" : "black";
-
-  const clearPNG = theme == "dark" ? lightClearPNG : darkClearPNG;
 
   const styles = useMemo(
     () =>
@@ -41,10 +41,10 @@ const SearchBar = (props) => {
           height: 50,
           flexDirection: "row",
           backgroundColor: bgColor,
-          width: "98%",
+          width: "99%",
           borderWidth: 1,
           borderColor: txtColor,
-          borderRadius: 8,
+          borderRadius: 10,
         },
         textInput: {
           flex: 1,
@@ -53,21 +53,19 @@ const SearchBar = (props) => {
           fontSize: 17,
           backgroundColor: bgColor,
           borderColor: bgColor,
-          borderRadius: 8,
+          borderRadius: 12,
         },
         touchable: {
-          flex: 1,
           maxHeight: "100%",
           width: 50,
-          // backgroundColor: bgColor,
-          // borderRadius: 8,
-          alignItems: "center",
-          justifyContent: "center"
+          backgroundColor: bgColor,
+          borderRadius: 12,
         },
         image: {
-          maxHeight: imageSize,
-          maxWidth: imageSize,
-          // backgroundColor: bgColor,
+          maxHeight: "100%",
+          maxWidth: 50,
+          backgroundColor: bgColor,
+          borderRadius: 12,
         },
       }),
     [theme]
@@ -78,8 +76,7 @@ const SearchBar = (props) => {
     const editedQuery = query
       .toLowerCase()
       .normalize("NFKD")
-      .replace(/[^\w\s.-_\/]/g, "")
-      .trim();
+      .replace(/[^\w\s.-_\/]/g, "");
     const filteredData = songList.filter((song) => {
       return (
         song.id.toString().includes(editedQuery) ||

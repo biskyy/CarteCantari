@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { View } from "react-native";
 
 const Separator = (props) => {
@@ -13,4 +13,4 @@ const Separator = (props) => {
     />
   );
 };
-export default Separator;
+export default memo(Separator);

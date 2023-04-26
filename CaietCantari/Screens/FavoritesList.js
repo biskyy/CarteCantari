@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useAtom } from "jotai";
-import { favoritesListAtom } from "../Components/State";
+import { favoritesList } from "../Components/State";
 import { StyleSheet, View } from "react-native";
 import { themeAtom } from "../Components/State";
 import SearchBar from "../Components/SearchBar";
@@ -9,7 +9,7 @@ import CustomList from "../Components/CustomList";
 
 const FavoritesList = (props) => {
   const [theme] = useAtom(themeAtom);
-  const [favoriteSongs] = useAtom(favoritesListAtom);
+  const [favoriteSongs] = useAtom(favoritesList);
   const insets = useSafeAreaInsets();
 
   const bgColor = theme == "dark" ? "black" : "white";
