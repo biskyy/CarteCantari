@@ -15,6 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { themeAtom, themeButtonKey } from "./State";
 import { useAtom } from "jotai";
 
+
 const lightModeIcon = require("../assets/icons/light-mode-icon-min.png");
 const darkModeIcon = require("../assets/icons/dark-mode-icon-min.png");
 const darkHamburgerIcon = require("../assets/icons/dark-hamburger-menu-min.png");
