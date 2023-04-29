@@ -40,7 +40,6 @@ const CustomDrawerContent = (props) => {
       <CustomCheckbox
         onPress={() => {
           setIsCCOnly({ isOnlyCC: !isCCOnly.isOnlyCC });
-          console.log(isCCOnly.isOnlyCC);
         }}
         checked={!isCCOnly.isOnlyCC}
         label="Numai caietul de cantari"
@@ -95,7 +94,9 @@ const Home = () => {
           ),
         }}
       >
-        {(props) => <MainScreen {...props} bookType={!isCCOnly.isOnlyCC ? "CC" : ""} />}
+        {(props) => (
+          <MainScreen {...props} bookType={!isCCOnly.isOnlyCC ? "CC" : ""} />
+        )}
       </Drawer.Screen>
       {isCCOnly.isOnlyCC && (
         <>

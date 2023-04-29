@@ -47,7 +47,6 @@ const CustomCheckbox = (props) => {
         <View
           style={[styles.checkboxBase, props.checked && styles.checkboxChecked]}
         >
-          {console.log(props.checked)}
           {props.checked == true ? (
             <>
               <Ionicons name="checkmark" size={25} color={bgColor} />

@@ -58,10 +58,8 @@ const GameController = () => {
 
   const checkEndGame = () => {
     if (checkWin(board)) {
-      console.log("win");
       setHasWon(true);
     } else if (isOver(board)) {
-      console.log("lose");
       setHasWon(false);
     }
   };
